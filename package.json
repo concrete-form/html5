@@ -1,0 +1,97 @@
+{
+  "name": "@concrete-form/html5",
+  "version": "0.0.1",
+  "description": "html5 implementation for Concrete Form",
+  "author": "Kevin Gilbert",
+  "repository": "concrete-form/html5",
+  "private": false,
+  "license": "MIT",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "postinstall": "yarn build && cd demo && yarn install",
+    "build:clean": "rimraf dist",
+    "build:transpile": "tsc --project tsconfig.build.json",
+    "build:storybook": "build-storybook",
+    "build": "yarn build:clean && yarn build:transpile",
+    "start": "yarn build && concurrently --kill-others \"yarn build:transpile --watch\" \"cd demo && yarn start\"",
+    "predeploy": "cd demo && yarn build",
+    "deploy": "gh-pages -d demo/build",
+    "publish:dist": "yarn build && node scripts/prepareDist.js && yarn publish dist --access public",
+    "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
+    "publish:chromatic": "npx chromatic",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
+    "lint": "eslint src",
+    "lint:fix": "yarn lint --fix",
+    "storybook": "start-storybook -p 6006"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/node-logger": "^6.3.12",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.12",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "chromatic": "^6.0.4",
+    "concurrently": "^6.3.0",
+    "coveralls": "^3.1.1",
+    "eslint-plugin-standard-cra": "^1.0.7",
+    "gh-pages": "^3.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "storybook": "^6.3.12",
+    "typescript": "^4.4.4",
+    "web-vitals": "^1.0.1"
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:standard-cra/recommended"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/*.stories.*"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
