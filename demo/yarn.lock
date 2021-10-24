@@ -1209,6 +1209,22 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@concrete-form/core@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.7.tgz#abb8c51447c3f370910d7bd3f76fa81d41b1ecbe"
+  integrity sha512-7KmeB1SiFa21GJydhXYG1TVC7V4xMYWvno0fL68Zk6BM/N3eL98/CHLclq7HesNwIMG/TulcjhRKttMj4QjC+A==
+
+"@concrete-form/html5@link:../dist":
+  version "0.0.0"
+  uid ""
+
+"@concrete-form/react-hook-form@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@concrete-form/react-hook-form/-/react-hook-form-0.0.2.tgz#ddaa89e08c512d10d4f8b3aa591116910a19634a"
+  integrity sha512-vuljw5k3scJe3BIAGD1ktPoYWdoofQ8NpZsUktP4R+oy/P3zyeRtB0zXNXHxebeiOV2jwCsKIXq0mvndOg34Mg==
+  dependencies:
+    "@concrete-form/core" "^0.0.7"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -6994,10 +7010,6 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-"library@link:..":
-  version "0.0.0"
-  uid ""
-
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
@@ -9168,6 +9180,11 @@ react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-hook-form@^7.17.5:
+  version "7.17.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.17.5.tgz#3852f294159378d0b5893c9fcc89e313937c6f89"
+  integrity sha512-4bPtPGkpVhZlgtTbtMGi0RFphKHgxCj5u3AsGz3SBdleELlG1pDf9zRQOtfGlOGkZlc7u78RzD0xu9kOw7PYdQ==
 
 react-is@^16.8.1:
   version "16.13.1"
