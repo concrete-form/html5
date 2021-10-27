@@ -13,7 +13,7 @@
 <div align="center">
   <a href="https://ci.appveyor.com/project/kegi/html5/history">
     <img alt="test coverage" style="margin:3px"
-    src="https://img.shields.io/appveyor/build/kegi/kegi5?style=flat-square" />
+    src="https://img.shields.io/appveyor/build/kegi/html5?style=flat-square" />
   </a>
   <a href="https://coveralls.io/github/concrete-form/html5">
     <img alt="test coverage" style="margin:3px"
