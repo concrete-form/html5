@@ -1,0 +1,25 @@
+[aria-invalid=true] {
+  border-color: #f00;
+  color: #f00;
+}
+
+input:not([type=checkbox]):not([type=radio]):focus {
+  outline: solid 1px currentcolor;
+}
+
+.control-errors {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem;
+  color: #f00;
+}
+
+form {
+  width: 600px;
+}
+
+input:not([type=checkbox]):not([type=radio]), select, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .25rem;
+}
