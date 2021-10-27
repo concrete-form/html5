@@ -1,34 +1,20 @@
 import React from 'react'
-import {
-  InputProps as BaseInputProps,
-  useControlProps,
-  useControlState,
-  useFormState,
-} from '@concrete-form/core'
+import { InputProps, useControlProps } from '@concrete-form/core'
 
-type InputProps = BaseInputProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+import Control from './layout/Control'
 
 const Input: React.FC<InputProps> = ({
   name,
-  fieldProps,
   ...inputProps
 }) => {
-  const { isSubmitting } = useFormState()
-  const controlledFieldProps = useControlProps(name, fieldProps)
-  const { errors } = useControlState(name)
-  const disabled = inputProps.disabled ?? controlledFieldProps.disabled ?? isSubmitting
+  const props = useControlProps(name, inputProps)
 
   return (
-    <>
+    <Control name={name}>
       <input
-        {...inputProps}
-        {...controlledFieldProps}
-        disabled={disabled}
+        {...props}
       />
-      { errors.map((error: string) => (
-        <div key={error} style={{ color: '#f00' }}>{ error }</div>
-      )) }
-    </>
+    </Control>
   )
 }
 
