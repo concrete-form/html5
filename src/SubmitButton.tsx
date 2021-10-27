@@ -15,13 +15,12 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
   ...buttonProps
 }) => {
   const { isSubmitting, hasErrors } = useFormState()
-  const disabled = buttonProps.disabled ?? hasErrors
 
   return (
     <button
       type="submit"
+      disabled={isSubmitting || hasErrors}
       {...buttonProps}
-      disabled={disabled}
     >
       { children }
       { isSubmitting && displayLoading && loadingComponent }
