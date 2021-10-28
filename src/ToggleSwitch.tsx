@@ -1,36 +1,38 @@
-import React, { useEffect } from 'react'
-import { ToggleSwitchProps, useControlProps, useControlState, useControlActions, mergeEventHandlers } from '@concrete-form/core'
+import React from 'react'
+import { ToggleSwitchProps, useCustomControlProps } from '@concrete-form/core'
 
 import Control from './layout/Control'
+import ControlLabel from './layout/ControlLabel'
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   name,
+  applyInitialValue = false,
+  label,
+  labelPosition,
   ...inputProps
 }) => {
-  const { value } = useControlState(name)
-  const props = useControlProps(name, inputProps)
-  const { setFieldValue } = useControlActions(name)
+  const incomingDataFormatter = (value?: boolean) => !!value
+  const outgoingDataFormatter = (value: string) => !!value
 
-  useEffect(() => {
-    if (value === undefined) {
-      setFieldValue(false, false, false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFieldValue(!event.target.checked, true, true)
-  }
+  const props = useCustomControlProps(name, {
+    incomingDataFormatter,
+    outgoingDataFormatter,
+    formatInitialValue: applyInitialValue,
+  }, {
+    ...inputProps,
+    type: 'checkbox',
+  })
 
   return (
     <Control name={name}>
-      <input
-        {...props}
-        onChange={mergeEventHandlers(inputProps.onChange, onChange)}
-        onBlur={inputProps.onBlur ?? (() => {})}
-        type="checkbox"
-        checked={!!value}
-      />
+      <ControlLabel label={label} labelPosition={labelPosition}>
+
+        <label className="concreteform-toggle-switch">
+          <input {...props} />
+          <div className="concreteform-toggle-switch-slider" />
+        </label>
+
+      </ControlLabel>
     </Control>
   )
 }
