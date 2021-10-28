@@ -1,0 +1,83 @@
+.concreteform-control [aria-invalid=true] {
+  border-color: #f00;
+  color: #f00;
+}
+
+.concreteform-control input:not([type=checkbox]):not([type=radio]):not([type=range])[aria-invalid=true]:focus {
+  outline: solid 1px currentcolor;
+}
+
+.concreteform-control-errors {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem;
+  color: #f00;
+}
+
+.concreteform-options-group {
+  display: flex;
+}
+
+.concreteform-options-group-horizontal {
+  flex-direction: row;
+}
+
+.concreteform-options-group-vertical {
+  flex-direction: column;
+}
+
+/* toggle switch */
+
+.concreteform-toggle-switch {
+	display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.concreteform-toggle-switch > input {
+	position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.concreteform-toggle-switch .concreteform-toggle-switch-slider {
+	width: 100%;
+  height: 100%;
+	background: #8f8f9d;
+  border-radius: 20px;
+  transition: .4s;
+}
+
+.concreteform-toggle-switch .concreteform-toggle-switch-slider:before {
+	content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: .25s;
+  transform: scale(.70);
+}
+
+.concreteform-toggle-switch > input:checked + .concreteform-toggle-switch-slider:before {
+	left: 36%;
+}
+
+.concreteform-toggle-switch > input:checked + .concreteform-toggle-switch-slider {
+    background: #0060df;
+}
+
+.concreteform-toggle-switch > input:disabled + .concreteform-toggle-switch-slider {
+  cursor: default;
+  transition: 0s;
+  background: #dfdfdf;
+}
+
+.concreteform-toggle-switch > input:checked:disabled + .concreteform-toggle-switch-slider {
+  background: #b7d6ff;
+}
