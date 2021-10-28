@@ -13,8 +13,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
   name,
   children,
   options,
-  single = false,
-  orientation = 'vertical',
+  orientation,
+  labelPosition,
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps)
@@ -24,7 +24,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
     <Control name={name}>
       <OptionsGroup>
         { parsedOptions.map(({ label, value, props: checkboxProps }) => (
-          <ControlLabel key={value} label={label}>
+          <ControlLabel key={value} label={label} labelPosition={labelPosition}>
             <input value={value} {...props} {...checkboxProps} type="checkbox" />
           </ControlLabel>
         )) }

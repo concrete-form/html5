@@ -19,7 +19,7 @@ const Errors: React.FC<ErrorsProps> = ({ name }) => {
 
   return (
     <div>
-      <ul className="control-errors">
+      <ul className="concreteform-control-errors">
         { errors.map((error: string) => (
           <li key={error}>{ error }</li>
         )) }

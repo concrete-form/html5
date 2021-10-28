@@ -9,11 +9,12 @@ import Control from './layout/Control'
 import OptionsGroup from './layout/OptionsGroup'
 import ControlLabel from './layout/ControlLabel'
 
-const Checkbox: React.FC<RadioProps> = ({
+const Radio: React.FC<RadioProps> = ({
   name,
   children,
   options,
-  orientation = 'vertical',
+  orientation,
+  labelPosition,
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps)
@@ -22,9 +23,9 @@ const Checkbox: React.FC<RadioProps> = ({
   return (
     <Control name={name}>
       <OptionsGroup orientation={orientation}>
-        { parsedOptions.map(({ label, value, props: checkboxProps }) => (
-          <ControlLabel key={value} label={label}>
-            <input value={value} {...props} {...checkboxProps} type="radio" />
+        { parsedOptions.map(({ label, value, props: radioProps }) => (
+          <ControlLabel key={value} label={label} labelPosition={labelPosition}>
+            <input value={value} {...props} {...radioProps} type="radio" />
           </ControlLabel>
         )) }
         { children }
@@ -33,4 +34,4 @@ const Checkbox: React.FC<RadioProps> = ({
   )
 }
 
-export default Checkbox
+export default Radio
