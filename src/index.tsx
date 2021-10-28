@@ -1,5 +1,3 @@
-export { default as CustomControl } from '@concrete-form/core/CustomControl'
-
 export { default as Input } from './Input'
 export { default as Autocomplete } from './Autocomplete'
 export { default as FileInput } from './FileInput'
@@ -10,4 +8,6 @@ export { default as Radio } from './Radio'
 export { default as Date } from './Date'
 export { default as Time } from './Time'
 export { default as ToggleSwitch } from './ToggleSwitch'
+export { default as Slider } from './Slider'
+export { default as CustomControl } from './CustomControl'
 export { default as SubmitButton } from './SubmitButton'
