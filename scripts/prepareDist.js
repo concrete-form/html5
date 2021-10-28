@@ -19,3 +19,5 @@ delete distPackage.browserslist
 fs.writeFileSync(path.join(dist, 'package.json'), JSON.stringify(distPackage, undefined, 2))
 
 fs.copyFileSync(path.join(root, 'README.md'), path.join(dist, 'README.md'))
+
+fs.copyFileSync(path.join(root, 'src/styles.css'), path.join(dist, 'styles.css'))
