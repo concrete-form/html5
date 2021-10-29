@@ -22,7 +22,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <Control name={name}>
-      <ItemsGroup>
+      <ItemsGroup orientation={orientation}>
         { parsedOptions.map(({ label, value, props: checkboxProps }) => (
           <ItemLabel key={value} label={label} labelPosition={labelPosition}>
             <input value={value} {...props} {...checkboxProps} type="checkbox" />
