@@ -1,9 +1,12 @@
 {
   "name": "@concrete-form/html5",
   "version": "0.0.4",
-  "description": "html5 implementation for Concrete Form",
   "author": "Kevin Gilbert",
+  "description": "html5 implementation for Concrete Form",
+  "keywords": ["form", "react", "html5", "concrete-form"],
   "repository": "concrete-form/html5",
+  "homepage": "https://github.com/concrete-form/html5",
+  "bugs": "https://github.com/concrete-form/html5/issues",
   "private": false,
   "license": "MIT",
   "module": "./dist/index.js",
