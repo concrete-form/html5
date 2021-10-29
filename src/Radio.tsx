@@ -6,8 +6,8 @@ import {
 } from '@concrete-form/core'
 
 import Control from './layout/Control'
-import OptionsGroup from './layout/OptionsGroup'
-import ControlLabel from './layout/ControlLabel'
+import ItemsGroup from './layout/ItemsGroup'
+import ItemLabel from './layout/ItemLabel'
 
 const Radio: React.FC<RadioProps> = ({
   name,
@@ -22,14 +22,14 @@ const Radio: React.FC<RadioProps> = ({
 
   return (
     <Control name={name}>
-      <OptionsGroup orientation={orientation}>
+      <ItemsGroup orientation={orientation}>
         { parsedOptions.map(({ label, value, props: radioProps }) => (
-          <ControlLabel key={value} label={label} labelPosition={labelPosition}>
+          <ItemLabel key={value} label={label} labelPosition={labelPosition}>
             <input value={value} {...props} {...radioProps} type="radio" />
-          </ControlLabel>
+          </ItemLabel>
         )) }
         { children }
-      </OptionsGroup>
+      </ItemsGroup>
     </Control>
   )
 }

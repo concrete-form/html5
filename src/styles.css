@@ -14,15 +14,15 @@
   color: #f00;
 }
 
-.concreteform-options-group {
+.concreteform-items-group {
   display: flex;
 }
 
-.concreteform-options-group-horizontal {
+.concreteform-items-group-horizontal {
   flex-direction: row;
 }
 
-.concreteform-options-group-vertical {
+.concreteform-items-group-vertical {
   flex-direction: column;
 }
 

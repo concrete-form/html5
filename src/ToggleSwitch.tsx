@@ -2,7 +2,7 @@ import React from 'react'
 import { ToggleSwitchProps, useCustomControlProps } from '@concrete-form/core'
 
 import Control from './layout/Control'
-import ControlLabel from './layout/ControlLabel'
+import ItemLabel from './layout/ItemLabel'
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   name,
@@ -25,14 +25,12 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
 
   return (
     <Control name={name}>
-      <ControlLabel label={label} labelPosition={labelPosition}>
-
+      <ItemLabel label={label} labelPosition={labelPosition}>
         <label className="concreteform-toggle-switch">
           <input {...props} />
           <div className="concreteform-toggle-switch-slider" />
         </label>
-
-      </ControlLabel>
+      </ItemLabel>
     </Control>
   )
 }

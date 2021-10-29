@@ -6,8 +6,8 @@ import {
 } from '@concrete-form/core'
 
 import Control from './layout/Control'
-import OptionsGroup from './layout/OptionsGroup'
-import ControlLabel from './layout/ControlLabel'
+import ItemsGroup from './layout/ItemsGroup'
+import ItemLabel from './layout/ItemLabel'
 
 const Checkbox: React.FC<CheckboxProps> = ({
   name,
@@ -22,14 +22,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <Control name={name}>
-      <OptionsGroup>
+      <ItemsGroup>
         { parsedOptions.map(({ label, value, props: checkboxProps }) => (
-          <ControlLabel key={value} label={label} labelPosition={labelPosition}>
+          <ItemLabel key={value} label={label} labelPosition={labelPosition}>
             <input value={value} {...props} {...checkboxProps} type="checkbox" />
-          </ControlLabel>
+          </ItemLabel>
         )) }
         { children }
-      </OptionsGroup>
+      </ItemsGroup>
     </Control>
   )
 }
