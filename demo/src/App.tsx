@@ -20,6 +20,8 @@ import SubmitButton from '@concrete-form/html5/SubmitButton'
 import './styles.css'
 
 import DemoPositionDirection from './DemoPositionDirection'
+import CustomControlDemo from './CustomControlDemo'
+import LabelledDemo from './LabelledDemo'
 
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
@@ -97,6 +99,8 @@ const App: React.FC = () => {
   const validateRadio = (value: any) => value !== null
 
   // return <DemoPositionDirection />
+  // return <CustomControlDemo />
+  // return <LabelledDemo />
 
   return (
     <>
