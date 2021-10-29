@@ -6,8 +6,6 @@ type ItemLabelProps = {
   labelPosition?: Position
 }
 
-const Wrapper: React.FC = ({ children }) => <div className="concreteform-item-label"><label>{ children }</label></div>
-
 const ItemLabel: React.FC<ItemLabelProps> = ({
   label,
   labelPosition = 'right',
@@ -19,25 +17,17 @@ const ItemLabel: React.FC<ItemLabelProps> = ({
     return <CustomItemLabel label={label} labelPosition={labelPosition}>{ children }</CustomItemLabel>
   }
 
-  switch (labelPosition) {
-    case 'top':
-      return (
-        <Wrapper><div>{ label }</div><div>{ children }</div></Wrapper>
-      )
-    case 'bottom':
-      return (
-        <Wrapper><div>{ children }</div><div>{ label }</div></Wrapper>
-      )
-    case 'left':
-      return (
-        <Wrapper>{ label } { children }</Wrapper>
-      )
-    case 'right':
-    default:
-      return (
-        <Wrapper>{ children } { label }</Wrapper>
-      )
-  }
+  const classNames = [
+    'concreteform-item-label',
+    `concreteform-${labelPosition}`,
+  ]
+
+  return (
+    <label className={classNames.join(' ')}>
+      <div>{ children }</div>
+      <div>{ label }</div>
+    </label>
+  )
 }
 
 export default ItemLabel

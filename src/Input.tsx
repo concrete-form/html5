@@ -11,9 +11,7 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <Control name={name}>
-      <input
-        {...props}
-      />
+      <input {...props} />
     </Control>
   )
 }

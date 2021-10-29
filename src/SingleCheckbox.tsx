@@ -11,12 +11,9 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   labelPosition,
   ...inputProps
 }) => {
-  const incomingDataFormatter = (value?: boolean) => !!value
-  const outgoingDataFormatter = (value: string) => !!value
-
   const props = useCustomControlProps(name, {
-    incomingDataFormatter,
-    outgoingDataFormatter,
+    incomingDataFormatter: (value?: boolean) => !!value,
+    outgoingDataFormatter: (value: string) => !!value,
     formatInitialValue: applyInitialValue,
   }, {
     ...inputProps,

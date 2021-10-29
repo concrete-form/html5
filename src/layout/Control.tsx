@@ -11,7 +11,7 @@ const Control: React.FC<ControlProps> = ({ name, children }) => {
   const { layout: { control: CustomControl } = {} } = useConcreteFormConfig()
 
   if (CustomControl) {
-    return <CustomControl>{ children } <Errors name={name} /></CustomControl>
+    return <CustomControl errors={<Errors name={name} />}>{ children }</CustomControl>
   }
 
   return <div className="concreteform-control">{ children } <Errors name={name} /></div>

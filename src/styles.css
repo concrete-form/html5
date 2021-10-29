@@ -1,3 +1,5 @@
+/* errors */
+
 .concreteform-control [aria-invalid=true] {
   border-color: #f00;
   color: #f00;
@@ -14,6 +16,31 @@
   color: #f00;
 }
 
+/* posititons */
+
+.concreteform-left {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+
+.concreteform-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.concreteform-top {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.concreteform-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+/* items group (radio / checkbox items) */
+
 .concreteform-items-group {
   display: flex;
 }
@@ -26,6 +53,15 @@
   flex-direction: column;
 }
 
+/* labelled input (input is always 60%) */
+
+.concreteform-labelled-control.concreteform-left > *:first-child, .concreteform-labelled-control.concreteform-right > *:first-child {
+  width: 60%;
+}
+.concreteform-labelled-control.concreteform-left > *:last-child, .concreteform-labelled-control.concreteform-right > *:last-child {
+  width: 40%;
+}
+
 /* toggle switch */
 
 .concreteform-toggle-switch {
@@ -34,6 +70,7 @@
   width: 32px;
   height: 20px;
   cursor: pointer;
+  margin: 0 0.3rem;
 }
 
 .concreteform-toggle-switch > input {

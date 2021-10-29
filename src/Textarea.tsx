@@ -11,9 +11,7 @@ const Textarea: React.FC<TextareaProps> = ({
 
   return (
     <Control name={name}>
-      <textarea
-        {...props}
-      />
+      <textarea {...props} />
     </Control>
   )
 }
