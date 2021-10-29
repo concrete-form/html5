@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Form from '@concrete-form/react-hook-form'
@@ -9,13 +11,15 @@ import Textarea from '@concrete-form/html5/Textarea'
 import Select from '@concrete-form/html5/Select'
 import Checkbox from '@concrete-form/html5/Checkbox'
 import Radio from '@concrete-form/html5/Radio'
-import Date from '@concrete-form/html5/Date'
-import Time from '@concrete-form/html5/Time'
+import DateTime from '@concrete-form/html5/DateTime'
 import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
+import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
 import Slider from '@concrete-form/html5/Slider'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
 
 import './styles.css'
+
+import DemoPositionDirection from './DemoPositionDirection'
 
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
@@ -51,9 +55,11 @@ const App: React.FC = () => {
     selectMultiple: ['d', 'bar'],
     date: '2021-01-20',
     time: '14:59',
+    datetime: '2021-01-20T14:59',
     checkbox: ['f', 'bar'],
     radio: 'bar',
     toggle: true,
+    acceptTerms: false,
     slider: 75,
   }
 
@@ -90,6 +96,8 @@ const App: React.FC = () => {
   const validateCheckbox = (values: any[]) => values?.length > 0
   const validateRadio = (value: any) => value !== null
 
+  // return <DemoPositionDirection />
+
   return (
     <>
       <h1>HTML5 Demo</h1>
@@ -105,11 +113,14 @@ const App: React.FC = () => {
         <br />
         <Radio name="radio" fieldProps={{ validate: { required: validateRadio } }} options={options} />
         <br />
-        <Date name="date" fieldProps={{ required: true }} />
-        <Time name="time" fieldProps={{ required: true }} />
+        <DateTime type="date" name="date" fieldProps={{ required: true }} />
+        <DateTime type="time" name="time" fieldProps={{ required: true }} />
+        <DateTime type="datetime" name="datetime" fieldProps={{ required: true }} />
         <br />
         <ToggleSwitch name="toggle" fieldProps={{ required: true }} label="I'm a toggle switch" />
         <Slider name="slider" fieldProps={{ min: 25 }} />
+
+        <SingleCheckbox name="acceptTerms" fieldProps={{ required: true }} label={<>I accept the <a href="#void">terms and conditions</a></>} />
 
         <br />
         <SubmitButton>Submit</SubmitButton>

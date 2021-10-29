@@ -5,6 +5,7 @@ import Form from '@concrete-form/react-hook-form'
 import Checkbox from '@concrete-form/html5/Checkbox'
 import Radio from '@concrete-form/html5/Radio'
 import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
+import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
 
 import './styles.css'
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   const validateCheckbox = (values: any[]) => values?.length > 0
   const validateRadio = (value: any) => value !== null
 
+  const componentStyle = { background: '#000', color: '#fff' }
   const columnStyle = { width: 300, padding: '10px 30px' }
   const hrStyle = { height: 1, border: 'none', background: '#b7b7b7', margin: '25px 0' }
 
@@ -37,7 +39,7 @@ const App: React.FC = () => {
         <div style={{ display: 'flex' }}>
           <div style={columnStyle}>
 
-            <h2>Checkbox</h2>
+            <h2 style={componentStyle}>Checkbox</h2>
             <h3>Vertical (<strong>default</strong>)</h3>
             <h4>right (<strong>default</strong>)</h4>
 
@@ -65,7 +67,7 @@ const App: React.FC = () => {
 
           <div style={columnStyle}>
 
-            <h2>Radio</h2>
+            <h2 style={componentStyle}>Radio</h2>
             <h3>Vertical (<strong>default</strong>)</h3>
             <h4>right (<strong>default</strong>)</h4>
             <Radio name="radio1" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="right" />
@@ -92,7 +94,7 @@ const App: React.FC = () => {
 
           <div style={columnStyle}>
 
-            <h2>Toggle Switch</h2>
+            <h2 style={componentStyle}>Toggle Switch</h2>
             <h4>right (<strong>default</strong>)</h4>
             <ToggleSwitch name="toggle1" fieldProps={{ required: true }} label="Label" labelPosition="right" />
             <h4>left</h4>
@@ -101,6 +103,18 @@ const App: React.FC = () => {
             <ToggleSwitch name="toggle3" fieldProps={{ required: true }} label="Label" labelPosition="top" />
             <h4>bottom</h4>
             <ToggleSwitch name="toggle4" fieldProps={{ required: true }} label="Label" labelPosition="bottom" />
+
+            <hr style={hrStyle} />
+
+            <h2 style={componentStyle}>Single checkbox</h2>
+            <h4>right (<strong>default</strong>)</h4>
+            <SingleCheckbox name="toggle1" fieldProps={{ required: true }} label="Label" labelPosition="right" />
+            <h4>left</h4>
+            <SingleCheckbox name="toggle2" fieldProps={{ required: true }} label="Label" labelPosition="left" />
+            <h4>top</h4>
+            <SingleCheckbox name="toggle3" fieldProps={{ required: true }} label="Label" labelPosition="top" />
+            <h4>bottom</h4>
+            <SingleCheckbox name="toggle4" fieldProps={{ required: true }} label="Label" labelPosition="bottom" />
 
           </div>
         </div>
