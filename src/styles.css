@@ -69,7 +69,13 @@
 }
 
 .concreteform-toggle-switch > input:checked + .concreteform-toggle-switch-slider {
+  background: #0075ff;
+}
+
+@-moz-document url-prefix() {
+  .concreteform-toggle-switch > input:checked + .concreteform-toggle-switch-slider {
     background: #0060df;
+  }
 }
 
 .concreteform-toggle-switch > input:disabled + .concreteform-toggle-switch-slider {
@@ -79,5 +85,11 @@
 }
 
 .concreteform-toggle-switch > input:checked:disabled + .concreteform-toggle-switch-slider {
-  background: #b7d6ff;
+  background: #bfdcff;
+}
+
+@-moz-document url-prefix() {
+  .concreteform-toggle-switch > input:checked:disabled + .concreteform-toggle-switch-slider {
+    background: #b7d6ff;
+  }
 }
