@@ -87,7 +87,7 @@ const App = () => {
     },
   })
   return (
-    <Form form={form} onSubmit={data => console.log(data)}>
+    <Form form={form} onSubmit={(data: any) => console.log(data)}>
       <CapitalizeInput name="capitalize" placeholder="capitalized (not controlled)" /><br />
       <CapitalizeInput name="capitalizeControlled" placeholder="capitalized (controlled)" applyLocally /><br />
       <SplitterInput name="splitter" placeholder="splitter" /><br />

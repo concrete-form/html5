@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@concrete-form/core": "^0.0.8",
+    "@concrete-form/react-hook-form": "^0.0.3",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
