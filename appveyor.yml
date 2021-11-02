@@ -6,7 +6,7 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: +2Ll2dKT0qrnuH+roy8Pn0lWqulLvVLBLUpsKevdZ0dFC1p6h0TZYTQ8OVYCb5Rl
   CHROMATIC_PROJECT_TOKEN:
-    secure: UWrShopxto/eBteqCANuQw==
+    secure: zbf0sDEE5W+XKd1h+QvI2w==
 init:
   - git config --global core.autocrlf input
 install:

@@ -27,7 +27,7 @@
     "deploy": "gh-pages -d demo/build",
     "publish:dist": "yarn build && yarn publish dist --access public",
     "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
-    "publish:chromatic": "npx chromatic --auto-accept-changes master",
+    "publish:chromatic": "npx chromatic --exit-zero-on-changes --auto-accept-changes master",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "test:coverage": "react-scripts test --watchAll=false --coverage",
