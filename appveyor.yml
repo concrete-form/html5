@@ -19,7 +19,7 @@ test_script:
   - yarn build
 on_success:
   - yarn publish:code-coverage
-  # - yarn publish:chromatic
+  - yarn publish:chromatic
 cache:
   - node_modules -> package.json
   
