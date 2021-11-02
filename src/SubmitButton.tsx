@@ -1,20 +1,29 @@
-import React from 'react'
 import {
-  SubmitButtonProps as SubmitButtonBaseProps,
+  SubmitButtonProps,
   useFormState,
 } from '@concrete-form/core'
-
-type SubmitButtonProps = {
-  loadingComponent?: React.ReactNode
-} & SubmitButtonBaseProps & React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({
   displayLoading = true,
   loadingComponent = '...',
+  alternateLoadingContent,
   children,
   ...buttonProps
 }) => {
   const { isSubmitting, hasErrors } = useFormState()
+
+  const render = () => {
+    if (isSubmitting && alternateLoadingContent) {
+      return alternateLoadingContent
+    }
+
+    return (
+      <>
+        { children }
+        { isSubmitting && displayLoading && loadingComponent }
+      </>
+    )
+  }
 
   return (
     <button
@@ -22,8 +31,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       disabled={isSubmitting || hasErrors}
       {...buttonProps}
     >
-      { children }
-      { isSubmitting && displayLoading && loadingComponent }
+      { render() }
     </button>
   )
 }

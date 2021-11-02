@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import {
   SelectProps,
   useControlProps,
   parseSelectOptions,
 } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 
 const Select: React.FC<SelectProps> = ({
   name,
@@ -35,16 +35,15 @@ const Select: React.FC<SelectProps> = ({
   }
 
   return (
-    <Control name={name}>
+    <ControlWithErrors name={name}>
       <select
         {...props}
-        onBlur={() => {}}
       >
         { allowEmpty && !inputProps.multiple && <option value="" /> }
         { renderOptions(parsedOptions) }
         { children }
       </select>
-    </Control>
+    </ControlWithErrors>
   )
 }
 

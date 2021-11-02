@@ -1,36 +1,44 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import {
   CheckboxProps,
   useControlProps,
   parseCheckboxOptions,
 } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 import ItemsGroup from './layout/ItemsGroup'
 import ItemLabel from './layout/ItemLabel'
 
 const Checkbox: React.FC<CheckboxProps> = ({
   name,
-  children,
   options,
   orientation,
   labelPosition,
   ...inputProps
 }) => {
-  const props = useControlProps(name, inputProps)
-  const parsedOptions = useMemo(() => parseCheckboxOptions(options, children), [options, children])
+  const props = useControlProps(name, inputProps, true)
+  const parsedOptions = useMemo(() => parseCheckboxOptions(options), [options])
 
   return (
-    <Control name={name}>
-      <ItemsGroup orientation={orientation}>
-        { parsedOptions.map(({ label, value, props: checkboxProps }) => (
-          <ItemLabel key={value} label={label} labelPosition={labelPosition}>
-            <input value={value} {...props} {...checkboxProps} type="checkbox" />
-          </ItemLabel>
-        )) }
-        { children }
-      </ItemsGroup>
-    </Control>
+    <ControlWithErrors name={name}>
+      <ItemsGroup
+        name={name}
+        items={(
+          <>
+            { parsedOptions.map(({ label, value, props: checkboxProps }) => (
+              <ItemLabel
+                key={value}
+                name={name}
+                control={<input value={value} {...props} {...checkboxProps} type="checkbox" />}
+                label={label}
+                labelPosition={labelPosition}
+              />
+            )) }
+          </>
+        )}
+        orientation={orientation}
+      />
+    </ControlWithErrors>
   )
 }
 

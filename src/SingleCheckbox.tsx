@@ -1,7 +1,6 @@
-import React from 'react'
 import { SingleCheckboxProps, useCustomControlProps } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 import ItemLabel from './layout/ItemLabel'
 
 const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
@@ -21,11 +20,14 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   })
 
   return (
-    <Control name={name}>
-      <ItemLabel label={label} labelPosition={labelPosition}>
-        <input {...props} />
-      </ItemLabel>
-    </Control>
+    <ControlWithErrors name={name}>
+      <ItemLabel
+        name={name}
+        control={<input {...props} />}
+        label={label}
+        labelPosition={labelPosition}
+      />
+    </ControlWithErrors>
   )
 }
 

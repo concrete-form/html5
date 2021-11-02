@@ -1,7 +1,6 @@
-import React from 'react'
 import { TextareaProps, useControlProps } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 
 const Textarea: React.FC<TextareaProps> = ({
   name,
@@ -10,9 +9,9 @@ const Textarea: React.FC<TextareaProps> = ({
   const props = useControlProps(name, inputProps)
 
   return (
-    <Control name={name}>
+    <ControlWithErrors name={name}>
       <textarea {...props} />
-    </Control>
+    </ControlWithErrors>
   )
 }
 

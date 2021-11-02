@@ -1,4 +1,3 @@
-import React from 'react'
 import { FileInputProps } from '@concrete-form/core'
 
 import Input from './Input'

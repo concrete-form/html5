@@ -1,4 +1,3 @@
-import React from 'react'
 import { DateTimeProps } from '@concrete-form/core'
 
 import Input from './Input'

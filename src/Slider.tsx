@@ -1,10 +1,26 @@
-import React from 'react'
-import { SliderProps } from '@concrete-form/core'
+import { SliderProps, useControlProps } from '@concrete-form/core'
 
-import Input from './Input'
+import ControlWithErrors from './util/ControlWithErrors'
+import ItemLabel from './layout/ItemLabel'
 
 const Slider: React.FC<SliderProps> = ({
+  name,
+  label,
+  labelPosition = 'top',
   ...inputProps
-}) => <Input {...inputProps} type="range" />
+}) => {
+  const props = useControlProps(name, inputProps)
+
+  return (
+    <ControlWithErrors name={name}>
+      <ItemLabel
+        name={name}
+        control={<input {...props} type="range" />}
+        label={label}
+        labelPosition={labelPosition}
+      />
+    </ControlWithErrors>
+  )
+}
 
 export default Slider

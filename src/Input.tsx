@@ -1,7 +1,6 @@
-import React from 'react'
 import { InputProps, useControlProps } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 
 const Input: React.FC<InputProps> = ({
   name,
@@ -10,9 +9,9 @@ const Input: React.FC<InputProps> = ({
   const props = useControlProps(name, inputProps)
 
   return (
-    <Control name={name}>
+    <ControlWithErrors name={name}>
       <input {...props} />
-    </Control>
+    </ControlWithErrors>
   )
 }
 

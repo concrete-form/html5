@@ -1,7 +1,6 @@
-import React from 'react'
 import { CustomControlProps, useCustomControlProps } from '@concrete-form/core'
 
-import Control from './layout/Control'
+import ControlWithErrors from './util/ControlWithErrors'
 
 const CustomControl: React.FC<CustomControlProps> = ({
   name,
@@ -24,9 +23,9 @@ const CustomControl: React.FC<CustomControlProps> = ({
   const renderComponent = render ?? (props => <input {...props} />)
 
   return (
-    <Control name={name}>
+    <ControlWithErrors name={name}>
       { renderComponent({ ...props }) }
-    </Control>
+    </ControlWithErrors>
   )
 }
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { AutocompleteProps } from '@concrete-form/core'
 
 import Input from './Input'
