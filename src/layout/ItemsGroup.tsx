@@ -1,26 +1,21 @@
-import React from 'react'
-import { Orientation, useConcreteFormConfig } from '@concrete-form/core'
+import { ItemsGroupLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
-type ItemsGroupProps = {
-  orientation?: Orientation
-}
-
-const ItemsGroup: React.FC<ItemsGroupProps> = ({
-  orientation = 'vertical',
-  children,
-}) => {
-  const { layout: { itemsGroup: CustomItemsGroup } = {} } = useConcreteFormConfig()
-
-  if (CustomItemsGroup) {
-    return <CustomItemsGroup orientation={orientation}>{ children }</CustomItemsGroup>
-  }
+const ItemsGroup: React.FC<ItemsGroupLayoutProps> = (props) => {
+  const {
+    items,
+    orientation = 'vertical',
+  } = props
 
   const classNames = [
     'concreteform-items-group',
     `concreteform-items-group-${orientation}`,
   ]
   return (
-    <div className={classNames.join(' ')}>{ children }</div>
+    <CustomizableLayout type="itemsGroup" props={props}>
+      <div className={classNames.join(' ')}>
+        { items }
+      </div>
+    </CustomizableLayout>
   )
 }
 

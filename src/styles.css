@@ -5,7 +5,7 @@
   color: #f00;
 }
 
-.concreteform-control input:not([type=checkbox]):not([type=radio]):not([type=range])[aria-invalid=true]:focus {
+.concreteform-control input:not([type=checkbox]):not([type=radio]):not([type=range])[aria-invalid=true]:focus, .concreteform-control textarea[aria-invalid=true]:focus {
   outline: solid 1px currentcolor;
 }
 

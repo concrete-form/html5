@@ -1,16 +1,20 @@
-import React from 'react'
-import { useConcreteFormConfig } from '@concrete-form/core'
+import { LabelLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
-const Label: React.FC = ({
-  children,
-}) => {
-  const { layout: { label: CustomLabel } = {} } = useConcreteFormConfig()
-
-  if (CustomLabel) {
-    return <CustomLabel>{ children }</CustomLabel>
-  }
-
-  return <div className="concreteform-label">{ children }</div>
+const Label: React.FC<LabelLayoutProps> = (props) => {
+  const {
+    label,
+    htmlFor,
+  } = props
+  return (
+    <CustomizableLayout type="label" props={props}>
+      <label
+        className="concreteform-label"
+        htmlFor={htmlFor}
+      >
+        { label }
+      </label>
+    </CustomizableLayout>
+  )
 }
 
 export default Label

@@ -1,30 +1,17 @@
-import React from 'react'
-import { useControlState, useConcreteFormConfig } from '@concrete-form/core'
+import { ErrorsLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
-type ErrorsProps = {
-  name: string
-}
-
-const Errors: React.FC<ErrorsProps> = ({ name }) => {
-  const { errors } = useControlState(name)
-  const { layout: { errors: CustomError } = {} } = useConcreteFormConfig()
-
-  if (!errors || errors?.length === 0) {
-    return null
-  }
-
-  if (CustomError) {
-    return <CustomError errors={errors} />
-  }
-
+const Errors: React.FC<ErrorsLayoutProps> = (props) => {
+  const { errors } = props
   return (
-    <div>
-      <ul className="concreteform-control-errors">
-        { errors.map((error: string) => (
-          <li key={error}>{ error }</li>
-        )) }
-      </ul>
-    </div>
+    <CustomizableLayout type="errors" props={props}>
+      <div>
+        <ul className="concreteform-control-errors">
+          { errors.map((error: string) => (
+            <li key={error}>{ error }</li>
+          )) }
+        </ul>
+      </div>
+    </CustomizableLayout>
   )
 }
 

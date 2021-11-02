@@ -1,20 +1,18 @@
-import React from 'react'
-import { useConcreteFormConfig } from '@concrete-form/core'
+import { ControlLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
-import Errors from './Errors'
-
-type ControlProps = {
-  name: string
-}
-
-const Control: React.FC<ControlProps> = ({ name, children }) => {
-  const { layout: { control: CustomControl } = {} } = useConcreteFormConfig()
-
-  if (CustomControl) {
-    return <CustomControl errors={<Errors name={name} />}>{ children }</CustomControl>
-  }
-
-  return <div className="concreteform-control">{ children } <Errors name={name} /></div>
+const Control: React.FC<ControlLayoutProps> = (props) => {
+  const {
+    control,
+    errors,
+  } = props
+  return (
+    <CustomizableLayout type="control" props={props}>
+      <div className="concreteform-control">
+        { control }
+        { errors }
+      </div>
+    </CustomizableLayout>
+  )
 }
 
 export default Control
