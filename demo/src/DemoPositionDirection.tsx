@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react'
 import Form from '@concrete-form/react-hook-form'
 
 import Checkbox from '@concrete-form/html5/Checkbox'

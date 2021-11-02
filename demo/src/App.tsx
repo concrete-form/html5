@@ -1,6 +1,5 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import Form from '@concrete-form/react-hook-form'
 
@@ -16,6 +15,7 @@ import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
 import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
 import Slider from '@concrete-form/html5/Slider'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
+import LabelledControl from '@concrete-form/html5/LabelledControl'
 
 import './styles.css'
 
@@ -25,25 +25,99 @@ import LabelledDemo from './LabelledDemo'
 
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
-// // custom errors example
+/******************************************************************/
+// custom layouts
 
-// const CustomErrors: React.FC<{ errors: string[] }> = ({ errors }) => {
-//   return (
-//     <>
-//       { errors.map(error => (
-//         <div key={error} style={{ background: 'yellow' }}>{ error }</div>
-//       )) }
-//     </>
-//   )
-// }
+type Position = 'top' | 'bottom' | 'left' | 'right'
+type Orientation = 'horizontal' | 'vertical'
 
-// // custom control container
+type ControlLayoutProps = {
+  name: string
+  control: React.ReactNode
+  errors: React.ReactNode
+}
 
-// const CustomControl: React.FC = ({ children }) => {
-//   return (
-//     <div style={{ padding: 5, background: '#ececec', margin: 5 }}>{ children }</div>
-//   )
-// }
+type ErrorsLayoutProps = {
+  name: string
+  errors: string[]
+}
+
+type ItemLabelLayoutProps = {
+  name: string
+  control: React.ReactNode
+  label: React.ReactNode
+  labelPosition?: Position
+}
+
+type ItemsGroupLayoutProps = {
+  name: string
+  items: React.ReactNode
+  orientation?: Orientation
+}
+
+type LabelLayoutProps = {
+  label: React.ReactNode
+  htmlFor?: string
+}
+
+type LabelledControlLayoutProps = {
+  control: React.ReactNode
+  label: React.ReactNode
+  labelPosition?: Position
+}
+
+const CustomLabelledControl: React.FC<LabelledControlLayoutProps> = ({ control, label }) => {
+  return (
+    <div className="demo-labelled-control">
+      <div>{ label }</div>
+      <div>{ control }</div>
+    </div>
+  )
+}
+
+const CustomControl: React.FC<ControlLayoutProps> = ({ control, errors }) => {
+  return (
+    <div className="demo-control">
+      { control }
+      { errors }
+    </div>
+  )
+}
+
+const CustomErrors: React.FC<ErrorsLayoutProps> = ({ errors }) => {
+  return (
+    <div className="demo-errors">
+      { errors.join(',') }
+    </div>
+  )
+}
+
+const CustomItemLabel: React.FC<ItemLabelLayoutProps> = ({ label, control, labelPosition = 'left' }) => {
+  return (
+    <label className={`demo-item-label concreteform-${labelPosition as string}`}>
+      <div>{ label }</div>
+      <div>{ control }</div>
+    </label>
+  )
+}
+
+const CustomItemsGroup: React.FC<ItemsGroupLayoutProps> = ({ items }) => {
+  return (
+    <div className="demo-items-group">
+      { items }
+    </div>
+  )
+}
+
+const CustomLabel: React.FC<LabelLayoutProps> = ({ label, htmlFor }) => {
+  return (
+    <label className="demo-label" htmlFor={htmlFor}>
+      { label }
+    </label>
+  )
+}
+
+/******************************************************************/
 
 const App: React.FC = () => {
   const values = {
@@ -53,7 +127,7 @@ const App: React.FC = () => {
     number: 42,
     password: 'password',
     autocomplete: 'autocompleted',
-    select: 'abc',
+    selectGroup: 'bar',
     selectMultiple: ['d', 'bar'],
     date: '2021-01-20',
     time: '14:59',
@@ -92,9 +166,6 @@ const App: React.FC = () => {
     { label: 'Baz', value: 'baz', props: { disabled: true } },
   ]
 
-  // to customize layout :
-  /* layout={{ errors: CustomErrors, control: CustomControl }} */
-
   const validateCheckbox = (values: any[]) => values?.length > 0
   const validateRadio = (value: any) => value !== null
 
@@ -105,25 +176,31 @@ const App: React.FC = () => {
   return (
     <>
       <h1>HTML5 Demo</h1>
-      <Form form={form} onSubmit={onSubmit}>
+      <Form
+        form={form}
+        onSubmit={onSubmit}
+        // layout={{
+        //   control: CustomControl,
+        //   errors: CustomErrors,
+        //   itemLabel: CustomItemLabel,
+        //   itemsGroup: CustomItemsGroup,
+        //   label: CustomLabel,
+        //   labelledControl: CustomLabelledControl,
+        // }}
+      >
         <Input name="input" fieldProps={{ required: 'this is required', pattern: /^[a-z]+$/i, minLength: 5 }} placeholder="Input" />
         <Autocomplete name="autocomplete" fieldProps={{ required: true }} placeholder="autocomplete" />
         <FileInput name="file" />
         <Textarea name="textarea" fieldProps={{ required: true }} placeholder="textarea" />
-        <Select name="select" fieldProps={{ required: true }} options={options} allowEmpty />
-        <Select name="selectGroup" fieldProps={{ required: true }} options={groupOptions} />
+        <Select name="selectGroup" fieldProps={{ required: true }} options={groupOptions} allowEmpty />
         <Select name="selectMultiple" fieldProps={{ required: true }} options={groupOptions} multiple allowEmpty />
         <Checkbox name="checkbox" fieldProps={{ validate: { required: validateCheckbox } }} options={options} />
-        <br />
         <Radio name="radio" fieldProps={{ validate: { required: validateRadio } }} options={options} />
-        <br />
         <DateTime type="date" name="date" fieldProps={{ required: true }} />
         <DateTime type="time" name="time" fieldProps={{ required: true }} />
         <DateTime type="datetime" name="datetime" fieldProps={{ required: true }} />
-        <br />
         <ToggleSwitch name="toggle" fieldProps={{ required: true }} label="I'm a toggle switch" />
-        <Slider name="slider" fieldProps={{ min: 25 }} />
-
+        <Slider label="Optional slider label" name="slider" fieldProps={{ min: 25 }} />
         <SingleCheckbox name="acceptTerms" fieldProps={{ required: true }} label={<>I accept the <a href="#void">terms and conditions</a></>} />
 
         <br />

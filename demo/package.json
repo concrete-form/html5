@@ -17,7 +17,7 @@
     "json5": "^2.2.0",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-hook-form": "^7.17.5",
+    "react-hook-form": "link:../node_modules/react-hook-form",
     "react-scripts": "link:../node_modules/react-scripts",
     "typescript": "link:../node_modules/typescript",
     "web-vitals": "link:../node_modules/web-vitals"
