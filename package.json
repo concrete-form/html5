@@ -48,6 +48,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/plugin-proposal-export-default-from": "^7.16.0",
+    "@babel/plugin-transform-typescript": "^7.16.1",
     "@concrete-form/react-hook-form": "^0.0.15",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",

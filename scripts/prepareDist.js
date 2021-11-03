@@ -13,6 +13,7 @@ const distPackage = JSON.parse(packageRawFile)
 delete distPackage.scripts
 delete distPackage.devDependencies
 delete distPackage.resolutions
+delete distPackage.jest
 delete distPackage.eslintConfig
 delete distPackage.browserslist
 
