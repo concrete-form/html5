@@ -15,7 +15,6 @@ import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
 import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
 import Slider from '@concrete-form/html5/Slider'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
-import LabelledControl from '@concrete-form/html5/LabelledControl'
 
 import './styles.css'
 

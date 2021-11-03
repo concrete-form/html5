@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UMD demo</title>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="./node_modules/@concrete-form/html5/umd/index.js"></script>
+
+  </head>
+  <body>
+
+  <!--
+    to start this project :
+     yarn start:umd
+     open http://localhost:5000/umd-demo
+
+     we use "serve" to avoid CORS issues when loading local files
+  -->
+
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+
+      ReactDOM.render(
+        <div>wip</div>,
+        document.getElementById('root')
+      )
+
+    </script>
+
+  </body>
+</html>
