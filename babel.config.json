@@ -8,6 +8,7 @@
   // https://github.com/babel/babel/issues/12008
   "ignore": [
     "src/storybook",
+    "src/testkit",
     "src/setupTests.ts",
     "**/*.d.ts",
     "**/__tests__",
@@ -27,6 +28,7 @@
     "babel-plugin-typescript-to-proptypes",
     "@babel/plugin-proposal-export-default-from",
     "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread"
+    "@babel/proposal-object-rest-spread",
+    "@babel/transform-runtime"
   ]
 }
