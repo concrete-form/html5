@@ -19,7 +19,7 @@
     <img alt="test coverage" style="margin:3px"
     src="https://img.shields.io/coveralls/github/concrete-form/html5?style=flat-square" />
   </a>
-<img alt="Tree shaking supported"src="https://img.shields.io/badge/Tree%20shacking-supported-success?style=flat-square" style="margin:3px" />
+<img alt="Tree shaking supported"src="https://img.shields.io/badge/Tree%20shaking-supported-success?style=flat-square" style="margin:3px" />
   <a href="https://www.npmjs.com/package/@concrete-form/html5">
     <img alt="License" style="margin:3px" 
     src="https://img.shields.io/npm/l/@concrete-form/html5?color=%23007ec6&style=flat-square&v=3" />
@@ -39,9 +39,8 @@ yarn add @concrete-form/html5
 # OR
 npm install @concrete-form/html5
 ```
-
 ## Storybook
-https://6181962da34217003a0d0018-booxjyhwls.chromatic.com
+[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://6181962da34217003a0d0018-booxjyhwls.chromatic.com)
 
 Thanks to [Chromatic](https://www.chromatic.com/) (They're awesome !)
 

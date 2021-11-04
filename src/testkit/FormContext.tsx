@@ -17,6 +17,8 @@ const FormContext: React.FC<FormContextProps> = ({
 }) => {
   const form = useForm({
     defaultValues: options.formValues,
+    criteriaMode: options.showAllErrors === false ? 'firstError' : 'all',
+    mode: 'onTouched',
   })
   return (
     <Form form={form} onSubmit={options.onSubmit}>

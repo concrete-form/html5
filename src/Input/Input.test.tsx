@@ -70,4 +70,16 @@ describe('Input', () => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
     })
   })
+
+  it('handle validation error', async () => {
+    render(<Input name="test" fieldProps={{ required: 'testing errors' }} />)
+    const input = screen.getByRole('textbox')
+    expect(input).toBeValid()
+    userEvent.click(input)
+    userEvent.click(document.body)
+    await waitFor(() => {
+      expect(input).toBeInvalid()
+    })
+    expect(screen.getByText('testing errors')).toBeInTheDocument()
+  })
 })
