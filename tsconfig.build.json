@@ -12,6 +12,7 @@
   ],
   "exclude": [
     "src/storybook",
+    "src/testkit",
     "src/setupTests.ts",
     "**/*.d.ts",
     "**/__tests__",
