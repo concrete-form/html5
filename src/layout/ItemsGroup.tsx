@@ -12,7 +12,7 @@ const ItemsGroup: React.FC<ItemsGroupLayoutProps> = (props) => {
   ]
   return (
     <CustomizableLayout type="itemsGroup" props={props}>
-      <div className={classNames.join(' ')}>
+      <div data-testid="group" className={classNames.join(' ')}>
         { items }
       </div>
     </CustomizableLayout>

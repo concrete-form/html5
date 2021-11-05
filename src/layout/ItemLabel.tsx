@@ -13,7 +13,7 @@ const ItemLabel: React.FC<ItemLabelLayoutProps> = (props) => {
 
   return (
     <CustomizableLayout type="itemLabel" props={props}>
-      <label className={classNames.join(' ')}>
+      <label data-testid="item-label" className={classNames.join(' ')}>
         <div>{ control }</div>
         <div>{ label }</div>
       </label>
