@@ -13,6 +13,5 @@ describe('FileInput', () => {
   it('render with multiple', () => {
     render(<FileInput name="test" data-testid="test" multiple />)
     expect(screen.getByTestId('test')).toHaveAttribute('multiple')
-    screen.debug()
   })
 })
