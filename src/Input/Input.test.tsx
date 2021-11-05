@@ -6,14 +6,12 @@ import Input from './Input'
 describe('Input', () => {
   it('render name prop', () => {
     render(<Input name="test" />)
-    const input = screen.getByRole('textbox')
-    expect(input).toHaveAttribute('name', 'test')
+    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'test')
   })
 
   it('render id prop', () => {
     render(<Input name="test" />)
-    const input = screen.getByRole('textbox')
-    expect(input).toHaveAttribute('id')
+    expect(screen.getByRole('textbox')).toHaveAttribute('id')
   })
 
   it('render input as required', () => {
@@ -25,14 +23,12 @@ describe('Input', () => {
 
   it('render other props to the input', () => {
     render(<Input name="test" data-test="foo" />)
-    const input = screen.getByRole('textbox')
-    expect(input.dataset.test).toBe('foo')
+    expect(screen.getByRole('textbox').dataset.test).toBe('foo')
   })
 
   it('render initial value', () => {
     render(<Input name="test" />, { formValues: { test: 'foo' } })
-    const input = screen.getByRole('textbox')
-    expect(input).toHaveDisplayValue('foo')
+    expect(screen.getByRole('textbox')).toHaveDisplayValue('foo')
   })
 
   it('render new value when changed', () => {
@@ -45,16 +41,14 @@ describe('Input', () => {
   it('call onChange callback', () => {
     const callback = jest.fn()
     render(<Input name="test" onChange={callback} />)
-    const input = screen.getByRole('textbox')
-    userEvent.type(input, 'foo')
+    userEvent.type(screen.getByRole('textbox'), 'foo')
     expect(callback).toHaveBeenCalledTimes(3)
   })
 
   it('call onBlur callback', () => {
     const callback = jest.fn()
     render(<Input name="test" onBlur={callback} />)
-    const input = screen.getByRole('textbox')
-    userEvent.click(input)
+    userEvent.click(screen.getByRole('textbox'))
     userEvent.click(document.body)
     expect(callback).toHaveBeenCalledTimes(1)
   })
@@ -62,10 +56,8 @@ describe('Input', () => {
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><Input name="test" /><button type="submit">submit</button></>, { onSubmit })
-    const input = screen.getByRole('textbox')
-    const submitButton = screen.getByRole('button', { name: 'submit' })
-    userEvent.type(input, 'baz')
-    userEvent.click(submitButton)
+    userEvent.type(screen.getByRole('textbox'), 'baz')
+    userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
     })
