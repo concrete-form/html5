@@ -7,7 +7,7 @@ describe('Input', () => {
   it('render name prop', () => {
     render(<Input name="test" />)
     const input = screen.getByRole('textbox')
-    expect(input).toHaveAttribute('name')
+    expect(input).toHaveAttribute('name', 'test')
   })
 
   it('render id prop', () => {
@@ -20,7 +20,7 @@ describe('Input', () => {
     render(<Input name="test" required />)
     const input = screen.getByRole('textbox')
     expect(input).toBeRequired()
-    expect(input).toHaveAttribute('aria-required')
+    expect(input).toHaveAttribute('aria-required', 'true')
   })
 
   it('render other props to the input', () => {
