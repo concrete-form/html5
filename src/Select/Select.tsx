@@ -28,7 +28,9 @@ const Select: React.FC<SelectProps> = ({
           const { label, value, props } = item
           return <option key={value} value={value} {...props}>{ label }</option>
         }
+        /* istanbul ignore next */
         default:
+          console.warn('Received unknown option type in select')
           return null
       }
     })
@@ -39,7 +41,7 @@ const Select: React.FC<SelectProps> = ({
       <select
         {...props}
       >
-        { allowEmpty && !inputProps.multiple && <option value="" /> }
+        { allowEmpty && !inputProps.multiple && <option /> }
         { renderOptions(parsedOptions) }
         { children }
       </select>
