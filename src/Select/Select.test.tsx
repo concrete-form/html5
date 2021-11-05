@@ -31,6 +31,7 @@ describe('Select', () => {
     expect(screen.getByRole('option', { name: 'foo' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: 'bar' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: 'baz' })).toBeInTheDocument()
+    expect(screen.getAllByRole('option')).toHaveLength(3)
   })
 
   it('doesn\'t crash without options', () => {
@@ -65,6 +66,18 @@ describe('Select', () => {
     expect(screen.getByRole('group', { name: 'group 1' })).toBeInTheDocument()
     expect(screen.getByRole('group', { name: 'group 2' })).toBeInTheDocument()
     expect(screen.getAllByRole('option')).toHaveLength(6)
+  })
+
+  it('render groups with no label', () => {
+    render(<Select
+      name="test"
+      options={[
+        { group: undefined, options: ['foo', 'bar'] },
+        'foo',
+      ]}
+    />)
+    expect(screen.getByRole('group')).toHaveProperty('label', '')
+    expect(screen.getAllByRole('option')).toHaveLength(3)
   })
 
   it('render groups props', () => {
@@ -121,6 +134,12 @@ describe('Select', () => {
   })
 
   describe('Select with single value', () => {
+    it('render an empty option when "allowEmpty" is set to true', () => {
+      render(<Select name="test" allowEmpty options={['foo']} />)
+      expect(screen.getByRole('option', { name: '' })).toBeInTheDocument()
+      expect(screen.getAllByRole('option')).toHaveLength(2)
+    })
+
     it('render initial value', () => {
       render(<Select name="test" options={['foo', 'bar', 'baz']} />, { formValues: { test: 'bar' } })
       expect(screen.getByRole('combobox')).toHaveDisplayValue('bar')
@@ -142,9 +161,27 @@ describe('Select', () => {
         expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
       })
     })
+
+    it('returns empty string when an empty value is selected', async () => {
+      const onSubmit = jest.fn()
+      render(<><Select name="test" options={['foo']} allowEmpty /><button type="submit">submit</button></>, { onSubmit })
+      const selectInput = screen.getByRole('combobox')
+      userEvent.selectOptions(selectInput, 'foo')
+      userEvent.selectOptions(selectInput, '')
+      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith({ test: '' }, expect.anything())
+      })
+    })
   })
 
   describe('Select with multiple values', () => {
+    it('ignore "allowEmpty" when "multiple" is enabled', () => {
+      render(<Select name="test" allowEmpty multiple options={['foo']} />)
+      expect(screen.queryByRole('option', { name: '' })).not.toBeInTheDocument()
+      expect(screen.getAllByRole('option')).toHaveLength(1)
+    })
+
     it('render initial value', () => {
       render(<Select multiple name="test" options={['foo', 'bar', 'baz']} />, { formValues: { test: ['foo', 'baz'] } })
       expect(screen.getByRole('listbox')).toHaveDisplayValue(['foo', 'baz'])
