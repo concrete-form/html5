@@ -9,7 +9,6 @@ const CustomControl: React.FC<CustomControlProps> = ({
   outgoingDataFormatter,
   applyLocally,
   formatInitialValue,
-  validateInitialValue,
   ...inputProps
 }) => {
   const parameters = {
@@ -17,7 +16,6 @@ const CustomControl: React.FC<CustomControlProps> = ({
     outgoingDataFormatter,
     applyLocally,
     formatInitialValue,
-    validateInitialValue,
   }
   const props = useCustomControlProps(name, parameters, inputProps)
   const renderComponent = render ?? (props => <input {...props} />)
