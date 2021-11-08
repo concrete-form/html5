@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 /* eslint-disable no-unreachable */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from 'react-hook-form'
@@ -138,6 +140,8 @@ const App: React.FC = () => {
     slider: 75,
   }
 
+  const [language, setLanguage] = useState('fr')
+
   const form = useForm({ defaultValues: values, mode: 'onTouched', criteriaMode: 'all' })
   const onSubmit = async (data: any) => {
     await wait(1000)
@@ -175,6 +179,9 @@ const App: React.FC = () => {
   return (
     <>
       <h1>HTML5 Demo</h1>
+      { language !== 'en' && (<button onClick={() => { setLanguage('en') }}>EN</button>) }
+      { language !== 'fr' && (<button onClick={() => { setLanguage('fr') }}>FR</button>) }
+
       <Form
         form={form}
         onSubmit={onSubmit}
@@ -186,8 +193,10 @@ const App: React.FC = () => {
         //   label: CustomLabel,
         //   labelledControl: CustomLabelledControl,
         // }}
+        language={language}
+        // translator={(...args: any[]) => { console.log(args); return 'Banana !' }}
       >
-        <Input name="input" fieldProps={{ required: 'this is required', pattern: /^[a-z]+$/i, minLength: 5 }} placeholder="Input" />
+        <Input name="input" fieldProps={{ required: true, pattern: /^[a-z]+$/i, minLength: 5 }} placeholder="Input" />
         <Autocomplete name="autocomplete" fieldProps={{ required: true }} placeholder="autocomplete" />
         <FileInput name="file" />
         <Textarea name="textarea" fieldProps={{ required: true }} placeholder="textarea" />
