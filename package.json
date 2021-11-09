@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/html5",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Kevin Gilbert",
   "description": "html5 implementation for Concrete Form",
   "keywords": [
@@ -51,7 +51,7 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
-    "@concrete-form/react-hook-form": "^0.0.32",
+    "@concrete-form/react-hook-form": "^0.0.34",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
