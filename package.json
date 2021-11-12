@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/html5",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "Kevin Gilbert",
   "description": "html5 implementation for Concrete Form",
   "keywords": [
@@ -17,6 +17,7 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "postinstall": "yarn build && cd demo && yarn install",
     "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
@@ -51,7 +52,7 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
-    "@concrete-form/react-hook-form": "^0.0.34",
+    "@concrete-form/react-hook-form": "^0.0.38",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
