@@ -3,6 +3,7 @@ import {
   CheckboxProps,
   useControlProps,
   parseCheckboxOptions,
+  getCheckboxProps,
 } from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
@@ -29,7 +30,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
               <ItemLabel
                 key={value}
                 name={name}
-                control={<input value={value} {...props} {...checkboxProps} type="checkbox" />}
+                control={<input {...getCheckboxProps(value, { ...props, ...checkboxProps })} />}
                 label={label}
                 labelPosition={labelPosition}
               />

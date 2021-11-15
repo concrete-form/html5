@@ -3,6 +3,7 @@ import {
   RadioProps,
   useControlProps,
   parseRadioOptions,
+  getRadioProps,
 } from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
@@ -29,7 +30,7 @@ const Radio: React.FC<RadioProps> = ({
               <ItemLabel
                 key={value}
                 name={name}
-                control={<input value={value} {...props} {...radioProps} type="radio" />}
+                control={<input {...getRadioProps(value, { ...props, ...radioProps })} />}
                 label={label}
                 labelPosition={labelPosition}
               />
