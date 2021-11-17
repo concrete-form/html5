@@ -1,6 +1,9 @@
-import { DateTimeProps } from '@concrete-form/core'
+import { DateTimeProps as CoreDateTimeProps } from '@concrete-form/core'
 
 import Input from '../Input'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type DateTimeProps = CoreDateTimeProps & Omit<ReactInputProps, 'type'>
 
 const DateTime: React.FC<DateTimeProps> = ({
   type,

@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { DateTimeProps } from '@concrete-form/core'
-import DateTimeInput from './DateTime'
+import DateTimeInput, { DateTimeProps } from './DateTime'
 
 export default {
   component: DateTimeInput,
