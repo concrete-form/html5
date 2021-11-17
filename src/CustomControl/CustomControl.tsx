@@ -1,6 +1,12 @@
-import { CustomControlProps, useCustomControlProps } from '@concrete-form/core'
+import {
+  CustomControlProps as CoreCustomControlProps,
+  useCustomControlProps,
+} from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
+
+type AnyReactProps = React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>
+export type CustomControlProps = CoreCustomControlProps & AnyReactProps
 
 const CustomControl: React.FC<CustomControlProps> = ({
   name,
