@@ -1,7 +1,13 @@
-import { SingleCheckboxProps, useCustomControlProps } from '@concrete-form/core'
+import {
+  SingleCheckboxProps as CoreSingleCheckboxProps,
+  useCustomControlProps,
+} from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
 import ItemLabel from '../layout/ItemLabel'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type SingleCheckboxProps = CoreSingleCheckboxProps & ReactInputProps
 
 const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   name,
