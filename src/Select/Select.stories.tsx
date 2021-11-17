@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { SelectProps } from '@concrete-form/core'
-import Select from './Select'
+import Select, { SelectProps } from './Select'
 
 export default {
   component: Select,

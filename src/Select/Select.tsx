@@ -1,11 +1,20 @@
 import { useMemo } from 'react'
 import {
-  SelectProps,
+  SelectProps as CoreSelectProps,
   useControlProps,
   parseSelectOptions,
 } from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
+
+type ReactSelectProps = React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+type ReactOptionsProps = React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>
+type ReactOptGroupProps = React.DetailedHTMLProps<React.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>
+export type SelectProps = CoreSelectProps<ReactOptGroupProps, ReactOptionsProps, string | undefined> & ReactSelectProps
+
+/* istanbul ignore next ; trick to use ReturnType with a generic function */
+const o = () => parseSelectOptions<ReactOptGroupProps, ReactOptionsProps, string | undefined>()
+type Options = ReturnType<typeof o>
 
 const Select: React.FC<SelectProps> = ({
   name,
@@ -17,7 +26,7 @@ const Select: React.FC<SelectProps> = ({
   const props = useControlProps(name, inputProps)
   const parsedOptions = useMemo(() => parseSelectOptions(options, children), [options, children])
 
-  const renderOptions = (options: ReturnType<typeof parseSelectOptions>) => {
+  const renderOptions = (options: Options) => {
     return options.map(item => {
       switch (item.type) {
         case 'group': {
@@ -28,7 +37,7 @@ const Select: React.FC<SelectProps> = ({
           const { label, value, props } = item
           return <option key={value} value={value} {...props}>{ label }</option>
         }
-        /* istanbul ignore next */
+        /* istanbul ignore next ; edge case if core version doesn't match this repo version */
         default:
           console.warn('Received unknown option type in select')
           return null
