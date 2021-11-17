@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { RadioProps } from '@concrete-form/core'
-import Radio from './Radio'
+import Radio, { RadioProps } from './Radio'
 
 export default {
   component: Radio,

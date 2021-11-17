@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  RadioProps,
+  RadioProps as CoreRadioProps,
   useControlProps,
   parseRadioOptions,
   getRadioProps,
@@ -9,6 +9,9 @@ import {
 import ControlWithErrors from '../util/ControlWithErrors'
 import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type RadioProps = CoreRadioProps<ReactInputProps, React.ReactNode> & ReactInputProps
 
 const Radio: React.FC<RadioProps> = ({
   name,
