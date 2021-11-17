@@ -1,7 +1,10 @@
 import {
-  SubmitButtonProps,
+  SubmitButtonProps as CoreSubmitButtonProps,
   useFormState,
 } from '@concrete-form/core'
+
+type ReactButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+export type SubmitButtonProps = CoreSubmitButtonProps & ReactButtonProps
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({
   displayLoading = true,

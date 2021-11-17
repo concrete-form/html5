@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { SubmitButtonProps } from '@concrete-form/core'
-import SubmitButton from './SubmitButton'
+import SubmitButton, { SubmitButtonProps } from './SubmitButton'
 
 export default {
   component: SubmitButton,
