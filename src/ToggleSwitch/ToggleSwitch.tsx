@@ -1,7 +1,13 @@
-import { ToggleSwitchProps, useCustomControlProps } from '@concrete-form/core'
+import {
+  ToggleSwitchProps as CoreToggleSwitchProps,
+  useCustomControlProps,
+} from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
 import ItemLabel from '../layout/ItemLabel'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type ToggleSwitchProps = CoreToggleSwitchProps & ReactInputProps
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   name,

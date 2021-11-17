@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { ToggleSwitchProps } from '@concrete-form/core'
-import ToggleSwitch from './ToggleSwitch'
+import ToggleSwitch, { ToggleSwitchProps } from './ToggleSwitch'
 
 export default {
   component: ToggleSwitch,
