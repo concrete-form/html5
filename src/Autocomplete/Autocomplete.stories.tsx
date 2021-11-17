@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { AutocompleteProps } from '@concrete-form/core'
-import Autocomplete from './Autocomplete'
+import Autocomplete, { AutocompleteProps } from './Autocomplete'
 
 export default {
   component: Autocomplete,
