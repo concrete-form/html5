@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  CheckboxProps,
+  CheckboxProps as CoreCheckboxProps,
   useControlProps,
   parseCheckboxOptions,
   getCheckboxProps,
@@ -9,6 +9,9 @@ import {
 import ControlWithErrors from '../util/ControlWithErrors'
 import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type CheckboxProps = CoreCheckboxProps<ReactInputProps, React.ReactNode> & ReactInputProps
 
 const Checkbox: React.FC<CheckboxProps> = ({
   name,

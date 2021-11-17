@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { CheckboxProps } from '@concrete-form/core'
-import Checkbox from './Checkbox'
+import Checkbox, { CheckboxProps } from './Checkbox'
 
 export default {
   component: Checkbox,
