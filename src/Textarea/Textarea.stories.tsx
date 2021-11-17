@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { TextareaProps } from '@concrete-form/core'
-import Textarea from './Textarea'
+import Textarea, { TextareaProps } from './Textarea'
 
 export default {
   component: Textarea,
