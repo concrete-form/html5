@@ -1,7 +1,13 @@
-import { SliderProps, useControlProps } from '@concrete-form/core'
+import {
+  SliderProps as CoreSliderProps,
+  useControlProps,
+} from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
 import ItemLabel from '../layout/ItemLabel'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type SliderProps = CoreSliderProps & ReactInputProps
 
 const Slider: React.FC<SliderProps> = ({
   name,

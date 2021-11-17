@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { SliderProps } from '@concrete-form/core'
-import Slider from './Slider'
+import Slider, { SliderProps } from './Slider'
 
 export default {
   component: Slider,
