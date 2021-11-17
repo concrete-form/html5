@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { FileInputProps } from '@concrete-form/core'
-import FileInput from './FileInput'
+import FileInput, { FileInputProps } from './FileInput'
 
 export default {
   component: FileInput,
