@@ -1,6 +1,9 @@
-import { InputProps, useControlProps } from '@concrete-form/core'
+import { InputProps as CoreInputProps, useControlProps } from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
+
+type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type InputProps = CoreInputProps & ReactInputProps
 
 const Input: React.FC<InputProps> = ({
   name,

@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { InputProps } from '@concrete-form/core'
-import Input from './Input'
+import Input, { InputProps } from './Input'
 
 export default {
   component: Input,
