@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-spacing */
 import { useState } from 'react'
 
 /* eslint-disable no-unreachable */
@@ -120,26 +121,26 @@ const CustomLabel: React.FC<LabelLayoutProps> = ({ label, htmlFor }) => {
 
 /******************************************************************/
 
-const App: React.FC = () => {
-  const values = {
-    input: 'input',
-    text: 'text',
-    textarea: 'text\narea',
-    number: 42,
-    password: 'password',
-    autocomplete: 'autocompleted',
-    selectGroup: 'bar',
-    selectMultiple: ['d', 'bar'],
-    date: '2021-01-20',
-    time: '14:59',
-    datetime: '2021-01-20T14:59',
-    checkbox: ['f', 'bar'],
-    radio: 'bar',
-    toggle: true,
-    acceptTerms: false,
-    slider: 75,
-  }
+const values = {
+  input: 'input',
+  text: 'text',
+  textarea: 'text\narea',
+  number: 42,
+  password: 'password',
+  autocomplete: 'autocompleted',
+  selectGroup: 'bar',
+  selectMultiple: ['d', 'bar'],
+  date: new Date(),
+  time: new Date(),
+  datetime: new Date(),
+  checkbox: ['f', 'bar'],
+  radio: 'bar',
+  toggle: true,
+  acceptTerms: false,
+  slider: 75,
+}
 
+const App: React.FC = () => {
   const [language, setLanguage] = useState('fr')
 
   const form = useForm({ defaultValues: values, mode: 'onTouched', criteriaMode: 'all' })

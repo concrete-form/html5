@@ -1,27 +1,49 @@
 import { DateTimeProps as CoreDateTimeProps } from '@concrete-form/core'
 
-import Input from '../Input'
+import CustomControl from '../CustomControl'
+import * as date from '../util/date'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 export type DateTimeProps = CoreDateTimeProps & Omit<ReactInputProps, 'type'>
 
 const DateTime: React.FC<DateTimeProps> = ({
+  name,
   type,
   ...inputProps
 }) => {
-  const getInputType = () => {
-    switch (type) {
-      case 'time':
-        return 'time'
-      case 'datetime':
-        return 'datetime-local'
-      case 'date':
-      default:
-        return 'date'
-    }
+  switch (type) {
+    case 'time':
+      return (
+        <CustomControl
+          name={name}
+          incomingDataFormatter={date.parseTime}
+          outgoingDataFormatter={date.formatTime}
+          type="time"
+          {...inputProps}
+        />
+      )
+    case 'datetime':
+      return (
+        <CustomControl
+          name={name}
+          incomingDataFormatter={date.parseDateTime}
+          outgoingDataFormatter={date.formatDateTime}
+          type="datetime-local"
+          {...inputProps}
+        />
+      )
+    case 'date':
+    default:
+      return (
+        <CustomControl
+          name={name}
+          incomingDataFormatter={date.parseDate}
+          outgoingDataFormatter={date.formatDate}
+          type="date"
+          {...inputProps}
+        />
+      )
   }
-
-  return <Input {...inputProps} type={getInputType()} />
 }
 
 export default DateTime
