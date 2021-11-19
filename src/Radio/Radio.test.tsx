@@ -135,7 +135,7 @@ describe('Radio', () => {
 
   it('handle validation error', async () => {
     const onSubmit = jest.fn()
-    const validateRadio = (value: any) => value !== null ? true : 'testing errors'
+    const validateRadio = (value: any) => value != null ? true : 'testing errors'
     render((
       <>
         <Radio name="test" options={['foo']} fieldProps={{ validate: validateRadio }} />
