@@ -11,31 +11,40 @@ input:not([type=checkbox]):not([type=radio]), select, textarea {
 }
 
 /***************/
-/* demo layout */
+/* custom layout */
 /***************/
 
-.demo-labelled-control {
+.custom-labelled-control {
   display: flex;
   border: solid 3px rgb(0, 0, 255);
   background: rgb(216, 216, 255);
   padding: 5px;
   margin: 15px
 }
-.demo-labelled-control > *:first-child {
+
+.custom-labelled-control > *:first-child {
   width: 40%;
 }
-.demo-labelled-control > *:last-child {
+
+.custom-labelled-control > *:last-child {
   width: 60%;
 }
 
-.demo-control, .demo-control {
+.custom-control {
   border: solid 3px rgb(255, 20, 145);
   background: rgb(255, 219, 238);
-  padding: 5px;
   margin: 5px;
 }
+.custom-control-control-wrapper {
+  padding: 5px;
+}
 
-.demo-errors {
+.custom-control-errors-wrapper {
+  padding: 5px;
+  border-top: solid 3px rgb(255, 20, 145);
+}
+
+.custom-errors {
   color: rgb(255, 0, 0);
   border: solid 3px rgb(255, 0, 0);
   background: rgb(255, 216, 216);
@@ -43,27 +52,27 @@ input:not([type=checkbox]):not([type=radio]), select, textarea {
   margin: 5px;
 }
 
-.demo-item-label {
+.custom-item-label {
   display: flex;
   border: solid 3px rgb(0, 100, 0);
   background: rgb(193, 255, 193);
   margin: 5px;
 }
-.demo-item-label.concreteform-right > *:first-child, .demo-item-label.concreteform-left > *:last-child {
+.custom-item-label.concreteform-right > *:first-child, .custom-item-label.concreteform-left > *:last-child {
   border-right: solid 3px rgb(0, 100, 0);
 }
-.demo-item-label > * {
+.custom-item-label > * {
   padding: 5px;
 }
 
-.demo-items-group {
+.custom-items-group {
   border: solid 3px rgb(255, 166, 0);
   background: rgb(255, 241, 216);
   padding: 5px;
   margin: 5px;
 }
 
-.demo-label {
+.custom-label {
   display: inline-block;
   border: solid 3px rgb(128, 0, 128);
   background: rgb(255, 197, 255);

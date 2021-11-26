@@ -4,6 +4,8 @@ import reportWebVitals from './reportWebVitals'
 import App from './App'
 import '@concrete-form/html5/styles.css'
 
+import './styles.css'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
