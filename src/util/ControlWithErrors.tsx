@@ -1,4 +1,4 @@
-import { useControlState } from '@concrete-form/core'
+import { useControlState, useTranslator } from '@concrete-form/core'
 import Control from '../layout/Control'
 import Errors from '../layout/Errors'
 
@@ -8,6 +8,8 @@ type ControlWithErrorsProps = {
 
 const ControlWithErrors: React.FC<ControlWithErrorsProps> = ({ name, children }) => {
   const { errors } = useControlState(name)
+  const translate = useTranslator()
+
   const renderErrors = () => {
     if (!errors || errors?.length === 0) {
       return
@@ -15,7 +17,7 @@ const ControlWithErrors: React.FC<ControlWithErrorsProps> = ({ name, children })
     return (
       <Errors
         name={name}
-        errors={errors}
+        errors={errors.map(translate)}
       />
     )
   }
