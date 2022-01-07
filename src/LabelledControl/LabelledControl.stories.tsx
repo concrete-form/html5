@@ -1,9 +1,9 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { LabelledcontrolProps } from '@concrete-form/core'
+import { LabelledControlProps } from '@concrete-form/core'
 import LabelledControl from './LabelledControl'
 import Input from '../Input'
-import Checkbox from '../Checkbox'
+import CheckboxesGroup from '../CheckboxesGroup'
 
 export default {
   component: LabelledControl,
@@ -12,15 +12,15 @@ export default {
   argTypes,
 }
 
-const templateWithSingleControl: Story<FormContextArgs<LabelledcontrolProps>> = ({ formContext, ...props }) => (
+const templateWithSingleControl: Story<FormContextArgs<LabelledControlProps>> = ({ formContext, ...props }) => (
   <LabelledControl {...props}>
     <Input name="demo" />
   </LabelledControl>
 )
 
-const templateWithControlGroup: Story<FormContextArgs<LabelledcontrolProps>> = ({ formContext, ...props }) => (
+const templateWithControlGroup: Story<FormContextArgs<LabelledControlProps>> = ({ formContext, ...props }) => (
   <LabelledControl {...props}>
-    <Checkbox name="demo" options={['foo', 'bar', 'baz']} />
+    <CheckboxesGroup name="demo" options={['foo', 'bar', 'baz']} />
   </LabelledControl>
 )
 

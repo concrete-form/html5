@@ -1368,17 +1368,17 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.61":
-  version "0.0.61"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.61.tgz#fb1e8289eb7bb9fb77fbd022a9925643e1623962"
-  integrity sha512-gl7Uef6WzwZ84PjA7By7mcISlk7VM1Q/oSSspLlargXhUmciB8odYxZmWr+3U8fe0yzvC3t16jFGaQS+YVpkWA==
+"@concrete-form/core@^0.0.68":
+  version "0.0.68"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.68.tgz#1d68824c355c46bc88e26d88109769dc187d0ded"
+  integrity sha512-JbKluGSV1W/zTK1uawHtZgCH0Z8Cyz+qMiaLaLBbK9ycrmQ+PHSVa0tkjcjoKIMaW3cYUj8VUlsfSSalfNPsVw==
 
-"@concrete-form/react-hook-form@^0.0.52":
-  version "0.0.52"
-  resolved "https://registry.yarnpkg.com/@concrete-form/react-hook-form/-/react-hook-form-0.0.52.tgz#86b4e6fabe10b1911e7f42aa61ce41ad399748b7"
-  integrity sha512-lo3cInuRsRzh/X9aGh9uzhjJs2Svj/d4fy/Imhvwce89QCY3jdF4mYXudpa7BYvPTRi6uQrZUwdkT49CUrzokQ==
+"@concrete-form/react-hook-form@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@concrete-form/react-hook-form/-/react-hook-form-0.0.58.tgz#fd7c5fa954b633b4362c67d81087e30671f6421a"
+  integrity sha512-RMNoQdkvYuiGf5Z7JPf6XNDuPrMx7jNGOkmFe4hKkt08+MkoOv3Ct1vLlFeFhkvKOUJUnsac9TBJ/3YBWnGH5A==
   dependencies:
-    "@concrete-form/core" "^0.0.61"
+    "@concrete-form/core" "^0.0.68"
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"

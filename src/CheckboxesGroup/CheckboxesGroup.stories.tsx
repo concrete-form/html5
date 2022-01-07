@@ -1,10 +1,10 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import Checkbox, { CheckboxProps } from './Checkbox'
+import CheckboxesGroup, { CheckboxesGroupProps } from './CheckboxesGroup'
 
 export default {
-  component: Checkbox,
-  title: 'Controls Group/Checkbox',
+  component: CheckboxesGroup,
+  title: 'Controls Group/Checkboxes',
   decorators: [formContext],
   argTypes,
 }
@@ -17,7 +17,7 @@ const defaultOptions = [
   'last',
 ]
 
-const template: Story<FormContextArgs<CheckboxProps>> = ({ formContext, ...props }) => <Checkbox {...props} />
+const template: Story<FormContextArgs<CheckboxesGroupProps>> = ({ formContext, ...props }) => <CheckboxesGroup {...props} />
 
 export const DefaultControl = template.bind({})
 

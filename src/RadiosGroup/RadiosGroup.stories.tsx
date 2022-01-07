@@ -1,10 +1,10 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import Radio, { RadioProps } from './Radio'
+import RadiosGroup, { RadiosGroupProps } from './RadiosGroup'
 
 export default {
-  component: Radio,
-  title: 'Controls Group/Radio',
+  component: RadiosGroup,
+  title: 'Controls Group/Radios',
   decorators: [formContext],
   argTypes,
 }
@@ -20,7 +20,7 @@ const defaultOptions = [
 
 const validateNotEmpty = (value: string) => value === '' ? 'This field is required' : true
 
-const template: Story<FormContextArgs<RadioProps>> = ({ formContext, ...props }) => <Radio {...props} />
+const template: Story<FormContextArgs<RadiosGroupProps>> = ({ formContext, ...props }) => <RadiosGroup {...props} />
 
 export const DefaultControl = template.bind({})
 

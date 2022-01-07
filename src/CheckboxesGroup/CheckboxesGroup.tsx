@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import {
-  RadioProps as CoreRadioProps,
+  CheckboxesGroupProps as CoreCheckboxesGroupProps,
   useControlProps,
-  parseRadioOptions,
-  getRadioProps,
+  parseCheckboxOptions,
+  getCheckboxProps,
 } from '@concrete-form/core'
 
 import ControlWithErrors from '../util/ControlWithErrors'
@@ -11,9 +11,9 @@ import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type RadioProps = CoreRadioProps<ReactInputProps, React.ReactNode> & ReactInputProps
+export type CheckboxesGroupProps = CoreCheckboxesGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
 
-const Radio: React.FC<RadioProps> = ({
+const CheckboxesGroup: React.FC<CheckboxesGroupProps> = ({
   name,
   options,
   orientation,
@@ -21,7 +21,7 @@ const Radio: React.FC<RadioProps> = ({
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps, true)
-  const parsedOptions = useMemo(() => parseRadioOptions(options), [options])
+  const parsedOptions = useMemo(() => parseCheckboxOptions(options), [options])
 
   return (
     <ControlWithErrors name={name}>
@@ -29,11 +29,11 @@ const Radio: React.FC<RadioProps> = ({
         name={name}
         items={(
           <>
-            { parsedOptions.map(({ label, value, props: radioProps }) => (
+            { parsedOptions.map(({ label, value, props: checkboxProps }) => (
               <ItemLabel
                 key={value}
                 name={name}
-                control={<input {...getRadioProps(value, { ...props, ...radioProps })} />}
+                control={<input {...getCheckboxProps(value, { ...props, ...checkboxProps })} />}
                 label={label}
                 labelPosition={labelPosition}
               />
@@ -46,4 +46,4 @@ const Radio: React.FC<RadioProps> = ({
   )
 }
 
-export default Radio
+export default CheckboxesGroup

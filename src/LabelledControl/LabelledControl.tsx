@@ -1,8 +1,8 @@
-import { LabelledcontrolProps, useControlLabelFor } from '@concrete-form/core'
+import { LabelledControlProps, useControlLabelFor } from '@concrete-form/core'
 import LabelledControlLayout from '../layout/LabelledControl'
 import Label from '../layout/Label'
 
-const Labelledcontrol: React.FC<LabelledcontrolProps> = ({
+const Labelledcontrol: React.FC<LabelledControlProps> = ({
   label,
   labelPosition,
   children,

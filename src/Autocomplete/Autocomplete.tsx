@@ -7,6 +7,6 @@ export type AutocompleteProps = CoreAutocompleteProps & ReactInputProps
 
 const Autocomplete: React.FC<AutocompleteProps> = ({
   ...inputProps
-}) => <Input autoComplete="on" {...inputProps} type="text" />
+}) => <Input autoComplete="on" {...inputProps} />
 
 export default Autocomplete
