@@ -67,11 +67,11 @@ describe('SingleCheckbox', () => {
   it('render new value when changed', async () => {
     render(<SingleCheckbox name="test" />)
     const input = screen.getByRole('checkbox')
-    userEvent.click(input)
+    await userEvent.click(input)
     await waitFor(() => {
       expect(input).toBeChecked()
     })
-    userEvent.click(input)
+    await userEvent.click(input)
     await waitFor(() => {
       expect(input).not.toBeChecked()
     })
@@ -80,7 +80,7 @@ describe('SingleCheckbox', () => {
   it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<SingleCheckbox name="test" onChange={callback} />)
-    userEvent.click(screen.getByRole('checkbox'))
+    await userEvent.click(screen.getByRole('checkbox'))
     await waitFor(() => {
       expect(callback).toHaveBeenCalledTimes(1)
     })
@@ -89,8 +89,8 @@ describe('SingleCheckbox', () => {
   it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<SingleCheckbox name="test" onBlur={callback} />)
-    userEvent.click(screen.getByRole('checkbox'))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('checkbox'))
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(callback).toHaveBeenCalledTimes(1)
     })
@@ -99,8 +99,8 @@ describe('SingleCheckbox', () => {
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><SingleCheckbox name="test" /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.click(screen.getByRole('checkbox'))
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('checkbox'))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: true }, expect.anything())
     })
@@ -110,8 +110,8 @@ describe('SingleCheckbox', () => {
     render(<SingleCheckbox name="test" fieldProps={{ required: 'testing errors' }} />, { formValues: { test: true } })
     const input = screen.getByRole('checkbox')
     expect(input).toBeValid()
-    userEvent.click(input)
-    userEvent.click(document.body)
+    await userEvent.click(input)
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(input).toBeInvalid()
     })

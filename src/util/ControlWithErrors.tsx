@@ -3,6 +3,7 @@ import Control from '../layout/Control'
 import Errors from '../layout/Errors'
 
 type ControlWithErrorsProps = {
+  children?: React.ReactNode
   name: string
 }
 

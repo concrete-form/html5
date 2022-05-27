@@ -36,8 +36,8 @@ describe('DateTime', () => {
     it('format date properly', async () => {
       const onSubmit = jest.fn()
       render(<><DateTime name="test" placeholder="test" type="date" /><button type="submit">submit</button></>, { onSubmit })
-      userEvent.type(screen.getByPlaceholderText('test'), '2001-02-03')
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.type(screen.getByPlaceholderText('test'), '2001-02-03')
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({
@@ -66,8 +66,8 @@ describe('DateTime', () => {
     it('format time properly', async () => {
       const onSubmit = jest.fn()
       render(<><DateTime name="test" placeholder="test" type="time" /><button type="submit">submit</button></>, { onSubmit })
-      userEvent.type(screen.getByPlaceholderText('test'), '16:59')
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.type(screen.getByPlaceholderText('test'), '16:59')
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({
@@ -98,7 +98,7 @@ describe('DateTime', () => {
       render(<><DateTime name="test" placeholder="test" type="datetime" /><button type="submit">submit</button></>, { onSubmit })
       // note: using fireevent since the datetime-local field is very specific to browsers and hard to simulate
       fireEvent.input(screen.getByPlaceholderText('test'), { target: { value: '2001-02-03T14:05' } })
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({

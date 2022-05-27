@@ -97,18 +97,18 @@ describe('Select', () => {
     expect(screen.getByRole('option', { name: 'bar' })).toBeInTheDocument()
   })
 
-  it('call onChange callback', () => {
+  it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<Select name="test" options={['foo']} onChange={callback} />)
-    userEvent.selectOptions(screen.getByRole('combobox'), 'foo')
+    await userEvent.selectOptions(screen.getByRole('combobox'), 'foo')
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
-  it('call onBlur callback', () => {
+  it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<Select name="test" onBlur={callback} />)
-    userEvent.click(screen.getByRole('combobox'))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('combobox'))
+    await userEvent.click(document.body)
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
@@ -116,8 +116,8 @@ describe('Select', () => {
     render(<Select name="test" fieldProps={{ required: 'testing errors' }} />)
     const select = screen.getByRole('combobox')
     expect(select).toBeValid()
-    userEvent.click(select)
-    userEvent.click(document.body)
+    await userEvent.click(select)
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(select).toBeInvalid()
     })
@@ -127,7 +127,7 @@ describe('Select', () => {
   it('save first item when not filled', async () => {
     const onSubmit = jest.fn()
     render(<><Select name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'foo' }, expect.anything())
     })
@@ -145,18 +145,18 @@ describe('Select', () => {
       expect(screen.getByRole('combobox')).toHaveDisplayValue('bar')
     })
 
-    it('render new value when changed', () => {
+    it('render new value when changed', async () => {
       render(<Select name="test" options={['foo', 'bar', 'baz']} />)
       const select = screen.getByRole('combobox')
-      userEvent.selectOptions(select, 'bar')
+      await userEvent.selectOptions(select, 'bar')
       expect(select).toHaveDisplayValue('bar')
     })
 
     it('save data on the form', async () => {
       const onSubmit = jest.fn()
       render(<><Select name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-      userEvent.selectOptions(screen.getByRole('combobox'), 'baz')
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.selectOptions(screen.getByRole('combobox'), 'baz')
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
       })
@@ -166,9 +166,9 @@ describe('Select', () => {
       const onSubmit = jest.fn()
       render(<><Select name="test" options={['foo']} allowEmpty /><button type="submit">submit</button></>, { onSubmit })
       const selectInput = screen.getByRole('combobox')
-      userEvent.selectOptions(selectInput, 'foo')
-      userEvent.selectOptions(selectInput, '')
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.selectOptions(selectInput, 'foo')
+      await userEvent.selectOptions(selectInput, '')
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: '' }, expect.anything())
       })
@@ -187,18 +187,18 @@ describe('Select', () => {
       expect(screen.getByRole('listbox')).toHaveDisplayValue(['foo', 'baz'])
     })
 
-    it('render new value when changed', () => {
+    it('render new value when changed', async () => {
       render(<Select multiple name="test" options={['foo', 'bar', 'baz']} />)
       const select = screen.getByRole('listbox')
-      userEvent.selectOptions(select, ['bar', 'baz'])
+      await userEvent.selectOptions(select, ['bar', 'baz'])
       expect(select).toHaveDisplayValue(['bar', 'baz'])
     })
 
     it('save data on the form', async () => {
       const onSubmit = jest.fn()
       render(<><Select multiple name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-      userEvent.selectOptions(screen.getByRole('listbox'), ['foo', 'bar'])
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.selectOptions(screen.getByRole('listbox'), ['foo', 'bar'])
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: ['foo', 'bar'] }, expect.anything())
       })
@@ -207,8 +207,8 @@ describe('Select', () => {
     it('returns an array even if only one item is selected', async () => {
       const onSubmit = jest.fn()
       render(<><Select multiple name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-      userEvent.selectOptions(screen.getByRole('listbox'), 'foo')
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.selectOptions(screen.getByRole('listbox'), 'foo')
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: ['foo'] }, expect.anything())
       })

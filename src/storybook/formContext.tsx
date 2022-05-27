@@ -7,6 +7,7 @@ export type FormContextArgs<T> = {
 } & T
 
 type FormWrapperProps = {
+  children?: React.ReactNode
   formContext?: UseFormProps
   onSubmit?: SubmitHandler<any>
 }

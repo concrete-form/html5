@@ -31,33 +31,33 @@ describe('Textarea', () => {
     expect(screen.getByRole('textbox')).toHaveDisplayValue('foo\nbar')
   })
 
-  it('render new value when changed', () => {
+  it('render new value when changed', async () => {
     render(<Textarea name="test" />)
     const textarea = screen.getByRole('textbox')
-    userEvent.type(textarea, 'bar\nbaz')
+    await userEvent.type(textarea, 'bar\nbaz')
     expect(textarea).toHaveDisplayValue('bar\nbaz')
   })
 
-  it('call onChange callback', () => {
+  it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<Textarea name="test" onChange={callback} />)
-    userEvent.type(screen.getByRole('textbox'), 'b{enter}a{enter}r')
+    await userEvent.type(screen.getByRole('textbox'), 'b{enter}a{enter}r')
     expect(callback).toHaveBeenCalledTimes(5)
   })
 
-  it('call onBlur callback', () => {
+  it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<Textarea name="test" onBlur={callback} />)
-    userEvent.click(screen.getByRole('textbox'))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('textbox'))
+    await userEvent.click(document.body)
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><Textarea name="test" /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.type(screen.getByRole('textbox'), 'b{enter}a{enter}z')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.type(screen.getByRole('textbox'), 'b{enter}a{enter}z')
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'b\na\nz' }, expect.anything())
     })
@@ -67,8 +67,8 @@ describe('Textarea', () => {
     render(<Textarea name="test" fieldProps={{ required: 'testing errors' }} />)
     const textarea = screen.getByRole('textbox')
     expect(textarea).toBeValid()
-    userEvent.click(textarea)
-    userEvent.click(document.body)
+    await userEvent.click(textarea)
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(textarea).toBeInvalid()
     })
