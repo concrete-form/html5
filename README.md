@@ -39,10 +39,12 @@ yarn add @concrete-form/html5
 # OR
 npm install @concrete-form/html5
 ```
+<a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation tool</a>
+
 ## Storybook
 [![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://master--6181962da34217003a0d0018.chromatic.com)
 
-Thanks to [Chromatic](https://www.chromatic.com/) (They're awesome !)
+Thanks to [Chromatic](https://www.chromatic.com/)
 
-## Doc and examples
+## Documentation and examples
 https://concrete-form.com/docs/controls/html5/api
