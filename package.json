@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/html5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Kevin Gilbert",
   "description": "html5 implementation for Concrete Form",
   "keywords": [
@@ -10,7 +10,7 @@
     "concrete-form"
   ],
   "repository": "concrete-form/html5",
-  "homepage": "https://github.com/concrete-form/html5",
+  "homepage": "https://concrete-form.com/docs/controls/html5/intro",
   "bugs": "https://github.com/concrete-form/html5/issues",
   "private": false,
   "license": "MIT",
@@ -30,8 +30,6 @@
     "build:prepare": "node scripts/prepareDist.js",
     "build:storybook": "build-storybook",
     "dev": "yarn build && concurrently --kill-others \"yarn build:esm --watch\" \"cd demo && yarn start\"",
-    "predeploy": "cd demo && yarn build",
-    "deploy": "gh-pages -d demo/build",
     "publish:dist": "yarn build && yarn publish dist --access public",
     "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
     "publish:chromatic": "npx chromatic --exit-zero-on-changes --auto-accept-changes master",
@@ -53,7 +51,7 @@
     "@babel/plugin-transform-runtime": "^7.18.2",
     "@babel/plugin-transform-typescript": "^7.18.1",
     "@babel/runtime": "^7.18.3",
-    "@concrete-form/react-hook-form": "^1.0.0",
+    "@concrete-form/react-hook-form": "^1.0.1",
     "@storybook/addon-actions": "^6.5.5",
     "@storybook/addon-essentials": "^6.5.5",
     "@storybook/addon-links": "^6.5.5",
@@ -77,7 +75,6 @@
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "eslint-plugin-standard-cra": "^1.0.8",
-    "gh-pages": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.31.2",
