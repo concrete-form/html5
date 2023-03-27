@@ -1,5 +1,7 @@
 import { ControlLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
+export type { ControlLayoutProps } from '@concrete-form/core'
+
 const Control: React.FC<ControlLayoutProps> = (props) => {
   const {
     control,

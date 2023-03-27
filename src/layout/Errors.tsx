@@ -1,5 +1,7 @@
 import { ErrorsLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
+export type { ErrorsLayoutProps } from '@concrete-form/core'
+
 const Errors: React.FC<ErrorsLayoutProps> = (props) => {
   const { errors } = props
   return (

@@ -1,5 +1,7 @@
 import { LabelledControlLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
+export type { LabelledControlLayoutProps } from '@concrete-form/core'
+
 const LabelledControl: React.FC<LabelledControlLayoutProps> = (props) => {
   const {
     control,

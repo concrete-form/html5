@@ -1,5 +1,7 @@
 import { ItemsGroupLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
+export type { ItemsGroupLayoutProps } from '@concrete-form/core'
+
 const ItemsGroup: React.FC<ItemsGroupLayoutProps> = (props) => {
   const {
     items,

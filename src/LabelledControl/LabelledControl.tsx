@@ -2,7 +2,9 @@ import { LabelledControlProps, useControlLabelFor } from '@concrete-form/core'
 import LabelledControlLayout from '../layout/LabelledControl'
 import Label from '../layout/Label'
 
-const Labelledcontrol: React.FC<LabelledControlProps> = ({
+export type { LabelledControlProps } from '@concrete-form/core'
+
+const LabelledControl: React.FC<LabelledControlProps> = ({
   label,
   labelPosition,
   children,
@@ -17,4 +19,4 @@ const Labelledcontrol: React.FC<LabelledControlProps> = ({
   )
 }
 
-export default Labelledcontrol
+export default LabelledControl

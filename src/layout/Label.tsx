@@ -1,5 +1,7 @@
 import { LabelLayoutProps, CustomizableLayout } from '@concrete-form/core'
 
+export type { LabelLayoutProps } from '@concrete-form/core'
+
 const Label: React.FC<LabelLayoutProps> = (props) => {
   const {
     label,
