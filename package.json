@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/html5",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Kevin Gilbert",
   "description": "html5 implementation for Concrete Form",
   "keywords": [
@@ -32,7 +32,7 @@
     "dev": "yarn build && concurrently --kill-others \"yarn build:esm --watch\" \"cd demo && yarn start\"",
     "publish:dist": "yarn build && yarn publish dist --access public",
     "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
-    "publish:chromatic": "npx chromatic --exit-zero-on-changes --auto-accept-changes master",
+    "publish:chromatic": "npx chromatic --exit-zero-on-changes --auto-accept-changes main",
     "test": "yarn test:types && react-scripts test --watchAll=false",
     "test:types": "tsc",
     "test:watch": "react-scripts test",
@@ -42,7 +42,7 @@
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006"
   },
   "peerDependencies": {
-    "@concrete-form/core": ">=1.0.0",
+    "@concrete-form/core": ">=1.0.2",
     "react": ">=18.0.0"
   },
   "devDependencies": {

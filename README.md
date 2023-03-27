@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/concrete-form/concrete-form">
-    <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/master/doc/logo.png" width="100" />
+    <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/main/doc/logo.png" width="100" />
   </a>
 </p>
 
@@ -42,7 +42,7 @@ npm install @concrete-form/html5
 <a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation tool</a>
 
 ## Storybook
-[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://master--6181962da34217003a0d0018.chromatic.com)
+[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://main--6181962da34217003a0d0018.chromatic.com)
 
 Thanks to [Chromatic](https://www.chromatic.com/)
 
