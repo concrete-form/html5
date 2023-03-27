@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  CheckboxesGroupProps as CoreCheckboxesGroupProps,
+  CheckboxGroupProps as CoreCheckboxGroupProps,
   useControlProps,
   parseCheckboxOptions,
   getCheckboxProps,
@@ -11,9 +11,9 @@ import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type CheckboxesGroupProps = CoreCheckboxesGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
+export type CheckboxGroupProps = CoreCheckboxGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
 
-const CheckboxesGroup: React.FC<CheckboxesGroupProps> = ({
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   name,
   options,
   orientation,
@@ -46,4 +46,4 @@ const CheckboxesGroup: React.FC<CheckboxesGroupProps> = ({
   )
 }
 
-export default CheckboxesGroup
+export default CheckboxGroup

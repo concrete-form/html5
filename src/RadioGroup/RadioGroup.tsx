@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  RadiosGroupProps as CoreRadiosGroupProps,
+  RadioGroupProps as CoreRadioGroupProps,
   useControlProps,
   parseRadioOptions,
   getRadioProps,
@@ -11,9 +11,9 @@ import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type RadiosGroupProps = CoreRadiosGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
+export type RadioGroupProps = CoreRadioGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
 
-const RadiosGroup: React.FC<RadiosGroupProps> = ({
+const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
   options,
   orientation,
@@ -46,4 +46,4 @@ const RadiosGroup: React.FC<RadiosGroupProps> = ({
   )
 }
 
-export default RadiosGroup
+export default RadioGroup

@@ -1,57 +1,57 @@
 import render from '../testkit/render'
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import CheckboxesGroup from './CheckboxesGroup'
+import CheckboxGroup from './CheckboxGroup'
 
-describe('CheckboxesGroup', () => {
+describe('CheckboxGroup', () => {
   it('render options', () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar']} />)
+    render(<CheckboxGroup name="test" options={['foo', 'bar']} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toBeInTheDocument()
     expect(screen.getByRole('checkbox', { name: 'bar' })).toBeInTheDocument()
   })
 
   it('doesn\'t crash without options', () => {
-    render(<CheckboxesGroup name="test" />)
+    render(<CheckboxGroup name="test" />)
   })
 
   it('render same label/value for string option', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} />)
+    render(<CheckboxGroup name="test" options={['foo']} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toHaveProperty('value', 'foo')
   })
 
   it('render labelled option', () => {
-    render(<CheckboxesGroup name="test" options={[{ label: 'foo', value: 'bar' }]} />)
+    render(<CheckboxGroup name="test" options={[{ label: 'foo', value: 'bar' }]} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toHaveProperty('value', 'bar')
   })
 
   it('render component label', () => {
-    render(<CheckboxesGroup name="test" options={[{ label: <div data-testid="component-label">label</div>, value: 'bar' }]} />)
+    render(<CheckboxGroup name="test" options={[{ label: <div data-testid="component-label">label</div>, value: 'bar' }]} />)
     expect(screen.getByTestId('component-label')).toBeInTheDocument()
   })
 
   it('render option props', () => {
-    render(<CheckboxesGroup name="test" options={[{ label: 'foo', value: 'foo', props: { disabled: true } }]} />)
+    render(<CheckboxGroup name="test" options={[{ label: 'foo', value: 'foo', props: { disabled: true } }]} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toBeDisabled()
   })
 
   it('render name prop on all options', () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar']} />)
+    render(<CheckboxGroup name="test" options={['foo', 'bar']} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toHaveProperty('name', 'test')
     expect(screen.getByRole('checkbox', { name: 'bar' })).toHaveProperty('name', 'test')
   })
 
   it('render type checkbox prop', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} />)
+    render(<CheckboxGroup name="test" options={['foo']} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toHaveProperty('type', 'checkbox')
   })
 
   it('doesn\'t render id prop', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} />)
+    render(<CheckboxGroup name="test" options={['foo']} />)
     expect(screen.getByRole('checkbox', { name: 'foo' })).toHaveProperty('id', '')
   })
 
   it('render inputs as required', () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar']} required />)
+    render(<CheckboxGroup name="test" options={['foo', 'bar']} required />)
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
     const barOption = screen.getByRole('checkbox', { name: 'bar' })
     expect(fooOption).toBeRequired()
@@ -61,39 +61,39 @@ describe('CheckboxesGroup', () => {
   })
 
   it('render other props to all the inputs', () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar']} data-testid="foo" />)
+    render(<CheckboxGroup name="test" options={['foo', 'bar']} data-testid="foo" />)
     expect(screen.getAllByTestId('foo')).toHaveLength(2)
   })
 
   it('render vertically by default', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} />)
+    render(<CheckboxGroup name="test" options={['foo']} />)
     expect(screen.getByTestId('group')).toHaveClass('concreteform-items-group-vertical')
   })
 
   it('render in the required orientation', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} orientation="horizontal" />)
+    render(<CheckboxGroup name="test" options={['foo']} orientation="horizontal" />)
     expect(screen.getByTestId('group')).toHaveClass('concreteform-items-group-horizontal')
   })
 
   it('render label right by default', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} />)
+    render(<CheckboxGroup name="test" options={['foo']} />)
     expect(screen.getByTestId('item-label')).toHaveClass('concreteform-right')
   })
 
   it('render label in the required position', () => {
-    render(<CheckboxesGroup name="test" options={['foo']} labelPosition="bottom" />)
+    render(<CheckboxGroup name="test" options={['foo']} labelPosition="bottom" />)
     expect(screen.getByTestId('item-label')).toHaveClass('concreteform-bottom')
   })
 
   it('render initial value', () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar', 'baz']} />, { formValues: { test: ['foo', 'baz'] } })
+    render(<CheckboxGroup name="test" options={['foo', 'bar', 'baz']} />, { formValues: { test: ['foo', 'baz'] } })
     expect(screen.getByRole('checkbox', { name: 'foo' })).toBeChecked()
     expect(screen.getByRole('checkbox', { name: 'bar' })).not.toBeChecked()
     expect(screen.getByRole('checkbox', { name: 'baz' })).toBeChecked()
   })
 
   it('render new value when changed', async () => {
-    render(<CheckboxesGroup name="test" options={['foo', 'bar']} />, { formValues: { test: ['bar'] } })
+    render(<CheckboxGroup name="test" options={['foo', 'bar']} />, { formValues: { test: ['bar'] } })
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
     const barOption = screen.getByRole('checkbox', { name: 'bar' })
     await userEvent.click(fooOption)
@@ -104,7 +104,7 @@ describe('CheckboxesGroup', () => {
 
   it('call onChange callback', async () => {
     const callback = jest.fn()
-    render(<CheckboxesGroup name="test" options={['foo']} onChange={callback} />)
+    render(<CheckboxGroup name="test" options={['foo']} onChange={callback} />)
     await userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
 
     await waitFor(() => {
@@ -114,7 +114,7 @@ describe('CheckboxesGroup', () => {
 
   it('call onBlur callback', async () => {
     const callback = jest.fn()
-    render(<CheckboxesGroup name="test" options={['foo']} onBlur={callback} />)
+    render(<CheckboxGroup name="test" options={['foo']} onBlur={callback} />)
     await userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
     await userEvent.click(document.body)
 
@@ -125,7 +125,7 @@ describe('CheckboxesGroup', () => {
 
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
-    render(<><CheckboxesGroup name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
+    render(<><CheckboxGroup name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
     await userEvent.click(screen.getByRole('checkbox', { name: 'bar' }))
     await userEvent.click(screen.getByRole('checkbox', { name: 'baz' }))
     await userEvent.click(screen.getByRole('button', { name: 'submit' }))
@@ -137,7 +137,7 @@ describe('CheckboxesGroup', () => {
 
   it('handle validation error', async () => {
     const validateCheckbox = (values: any[]) => values?.length > 0 ? true : 'testing errors'
-    render(<CheckboxesGroup name="test" options={['foo']} fieldProps={{ validate: { required: validateCheckbox } }} />)
+    render(<CheckboxGroup name="test" options={['foo']} fieldProps={{ validate: { required: validateCheckbox } }} />)
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
     await userEvent.click(fooOption)
     await userEvent.click(fooOption)

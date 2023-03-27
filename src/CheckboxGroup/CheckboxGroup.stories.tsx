@@ -1,16 +1,15 @@
 import { Story } from '@storybook/react'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import RadiosGroup, { RadiosGroupProps } from './RadiosGroup'
+import CheckboxGroup, { CheckboxGroupProps } from './CheckboxGroup'
 
 export default {
-  component: RadiosGroup,
-  title: 'Controls Group/Radios',
+  component: CheckboxGroup,
+  title: 'Controls Group/Checkbox',
   decorators: [formContext],
   argTypes,
 }
 
 const defaultOptions = [
-  { label: <em>None</em>, value: '' },
   'first',
   { label: 'with label', value: 'second' },
   { label: <span style={{ fontWeight: 'bold', color: 'deeppink' }}>with style</span>, value: 'third' },
@@ -18,15 +17,13 @@ const defaultOptions = [
   'last',
 ]
 
-const validateNotEmpty = (value: string) => value === '' ? 'This field is required' : true
-
-const template: Story<FormContextArgs<RadiosGroupProps>> = ({ formContext, ...props }) => <RadiosGroup {...props} />
+const template: Story<FormContextArgs<CheckboxGroupProps>> = ({ formContext, ...props }) => <CheckboxGroup {...props} />
 
 export const DefaultControl = template.bind({})
 
 DefaultControl.args = {
   name: 'demo',
-  fieldProps: { validate: validateNotEmpty },
+  fieldProps: { required: 'This field is required' },
   formContext: { defaultValues: { demo: 'second' } },
   options: defaultOptions,
 }

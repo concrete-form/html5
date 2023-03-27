@@ -11,8 +11,8 @@ import Autocomplete from '@concrete-form/html5/Autocomplete'
 import FileInput from '@concrete-form/html5/FileInput'
 import Textarea from '@concrete-form/html5/Textarea'
 import Select from '@concrete-form/html5/Select'
-import CheckboxesGroup from '@concrete-form/html5/CheckboxesGroup'
-import RadiosGroup from '@concrete-form/html5/RadiosGroup'
+import CheckboxGroup from '@concrete-form/html5/CheckboxGroup'
+import RadioGroup from '@concrete-form/html5/RadioGroup'
 import DateTime from '@concrete-form/html5/DateTime'
 import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
 import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
@@ -91,8 +91,8 @@ const App: React.FC = () => {
         <Textarea name="textarea" fieldProps={{ required: true }} placeholder="textarea" />
         <Select name="selectGroup" fieldProps={{ required: true }} options={groupOptions} allowEmpty />
         <Select name="selectMultiple" fieldProps={{ required: true }} options={groupOptions} multiple allowEmpty />
-        <CheckboxesGroup name="checkbox" fieldProps={{ validate: { required: validateCheckbox } }} options={options} />
-        <RadiosGroup name="radio" fieldProps={{ validate: { required: validateRadio } }} options={options} />
+        <CheckboxGroup name="checkbox" fieldProps={{ validate: { required: validateCheckbox } }} options={options} />
+        <RadioGroup name="radio" fieldProps={{ validate: { required: validateRadio } }} options={options} />
         <DateTime type="date" name="date" fieldProps={{ required: true }} />
         <DateTime type="time" name="time" fieldProps={{ required: true }} />
         <DateTime type="datetime" name="datetime" fieldProps={{ required: true }} />

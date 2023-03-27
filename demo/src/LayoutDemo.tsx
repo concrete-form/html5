@@ -3,7 +3,7 @@
 import Form from '@concrete-form/react-hook-form'
 import LabelledControl from '@concrete-form/html5/LabelledControl'
 import Input from '@concrete-form/html5/Input'
-import CheckboxesGroup from '@concrete-form/html5/CheckboxesGroup'
+import CheckboxGroup from '@concrete-form/html5/CheckboxGroup'
 
 import { useForm } from 'react-hook-form'
 
@@ -22,7 +22,7 @@ const LayoutDemo: React.FC = () => {
       </LabelledControl>
 
       <LabelledControl label="Label">
-        <CheckboxesGroup name="test2" options={['Foo', 'bar', { label: 'Baz', value: 'Baz', props: { disabled: true } }]} fieldProps={{ required: 'Error message' }} />
+        <CheckboxGroup name="test2" options={['Foo', 'bar', { label: 'Baz', value: 'Baz', props: { disabled: true } }]} fieldProps={{ required: 'Error message' }} />
       </LabelledControl>
 
     </Form>

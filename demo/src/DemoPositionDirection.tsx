@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Form from '@concrete-form/react-hook-form'
 
-import CheckboxesGroup from '@concrete-form/html5/CheckboxesGroup'
-import RadiosGroup from '@concrete-form/html5/RadiosGroup'
+import CheckboxGroup from '@concrete-form/html5/CheckboxGroup'
+import RadioGroup from '@concrete-form/html5/RadioGroup'
 import ToggleSwitch from '@concrete-form/html5/ToggleSwitch'
 import SingleCheckbox from '@concrete-form/html5/SingleCheckbox'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
@@ -42,25 +42,25 @@ const App: React.FC = () => {
             <h3>Vertical (<strong>default</strong>)</h3>
             <h4>right (<strong>default</strong>)</h4>
 
-            <CheckboxesGroup name="checkbox1" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="right" />
+            <CheckboxGroup name="checkbox1" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="right" />
             <h4>left</h4>
-            <CheckboxesGroup name="checkbox2" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="left" />
+            <CheckboxGroup name="checkbox2" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="left" />
             <h4>top</h4>
-            <CheckboxesGroup name="checkbox3" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="top" />
+            <CheckboxGroup name="checkbox3" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="top" />
             <h4>bottom</h4>
-            <CheckboxesGroup name="checkbox4" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="bottom" />
+            <CheckboxGroup name="checkbox4" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="vertical" labelPosition="bottom" />
 
             <hr style={hrStyle} />
 
             <h3>Horizontal</h3>
             <h4>right (<strong>default</strong>)</h4>
-            <CheckboxesGroup name="checkbox5" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="right" />
+            <CheckboxGroup name="checkbox5" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="right" />
             <h4>left</h4>
-            <CheckboxesGroup name="checkbox6" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="left" />
+            <CheckboxGroup name="checkbox6" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="left" />
             <h4>top</h4>
-            <CheckboxesGroup name="checkbox7" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="top" />
+            <CheckboxGroup name="checkbox7" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="top" />
             <h4>bottom</h4>
-            <CheckboxesGroup name="checkbox8" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="bottom" />
+            <CheckboxGroup name="checkbox8" fieldProps={{ validate: { required: validateCheckbox } }} options={options} orientation="horizontal" labelPosition="bottom" />
 
           </div>
 
@@ -69,25 +69,25 @@ const App: React.FC = () => {
             <h2 style={componentStyle}>Radio</h2>
             <h3>Vertical (<strong>default</strong>)</h3>
             <h4>right (<strong>default</strong>)</h4>
-            <RadiosGroup name="radio1" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="right" />
+            <RadioGroup name="radio1" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="right" />
             <h4>left</h4>
-            <RadiosGroup name="radio2" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="left" />
+            <RadioGroup name="radio2" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="left" />
             <h4>top</h4>
-            <RadiosGroup name="radio3" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="top" />
+            <RadioGroup name="radio3" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="top" />
             <h4>bottom</h4>
-            <RadiosGroup name="radio4" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="bottom" />
+            <RadioGroup name="radio4" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="vertical" labelPosition="bottom" />
 
             <hr style={hrStyle} />
 
             <h3>Horizontal</h3>
             <h4>right (<strong>default</strong>)</h4>
-            <RadiosGroup name="radio5" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="right" />
+            <RadioGroup name="radio5" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="right" />
             <h4>left</h4>
-            <RadiosGroup name="radio6" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="left" />
+            <RadioGroup name="radio6" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="left" />
             <h4>top</h4>
-            <RadiosGroup name="radio7" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="top" />
+            <RadioGroup name="radio7" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="top" />
             <h4>bottom</h4>
-            <RadiosGroup name="radio8" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="bottom" />
+            <RadioGroup name="radio8" fieldProps={{ validate: { required: validateRadio } }} options={options} orientation="horizontal" labelPosition="bottom" />
 
           </div>
 
