@@ -7,13 +7,14 @@ export type InputProps = CoreInputProps & ReactInputProps
 
 const Input: React.FC<InputProps> = ({
   name,
+  type = 'text',
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps)
 
   return (
     <ControlWithErrors name={name}>
-      <input {...props} />
+      <input type={type} {...props} />
     </ControlWithErrors>
   )
 }
