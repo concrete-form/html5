@@ -1,23 +1,28 @@
-import { LabelledControlLayoutProps, CustomizableLayout } from '@concrete-form/core'
+import { CustomizableLayout } from '@concrete-form/core'
 
-export type { LabelledControlLayoutProps } from '@concrete-form/core'
+import { LabelledControlProps } from '../LabelledControl/LabelledControl'
+
+export type LabelledControlLayoutProps = LabelledControlProps
 
 const LabelledControl: React.FC<LabelledControlLayoutProps> = (props) => {
   const {
     control,
     label,
-    labelPosition = 'left',
+    labelPosition = 'top',
+    mainContainerProps,
+    labelContainerProps,
+    controlContainerProps,
   } = props
   const classNames = [
     'concreteform-labelled-control',
-    `concreteform-${labelPosition}`,
+    `concreteform-${String(labelPosition)}`,
   ]
 
   return (
     <CustomizableLayout type="labelledControl" props={props}>
-      <div data-testid="labelled-control" className={classNames.join(' ')}>
-        { control }
-        { label }
+      <div data-testid="labelled-control" className={classNames.join(' ')} {...mainContainerProps}>
+        <div {...controlContainerProps}>{ control }</div>
+        <div {...labelContainerProps}>{ label }</div>
       </div>
     </CustomizableLayout>
   )

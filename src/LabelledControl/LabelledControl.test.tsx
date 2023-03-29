@@ -17,14 +17,14 @@ describe('LabelledControl', () => {
     expect(screen.getByTestId('foo')).toBeInTheDocument()
   })
 
-  it('render the label at left by default', () => {
+  it('render the label on top by default', () => {
     render(<LabelledControl label="label-test" />)
-    expect(screen.getByTestId('labelled-control')).toHaveClass('concreteform-left')
+    expect(screen.getByTestId('labelled-control')).toHaveClass('concreteform-top')
   })
 
   it('render the label at required position', () => {
-    render(<LabelledControl label="label-test" labelPosition="top" />)
-    expect(screen.getByTestId('labelled-control')).toHaveClass('concreteform-top')
+    render(<LabelledControl label="label-test" labelPosition="right" />)
+    expect(screen.getByTestId('labelled-control')).toHaveClass('concreteform-right')
   })
 
   it('render the control', () => {

@@ -17,11 +17,17 @@ const LayoutDemo: React.FC = () => {
       form={form}
       layout={layout}
     >
-      <LabelledControl label="Label">
+      <LabelledControl
+        label="Label"
+        labelPosition="left"
+        // mainContainerProps={{ style: { background: 'yellow' } }}
+        // labelContainerProps={{ className: 'lc-label' }}
+        // controlContainerProps={{ className: 'lc-control' }}
+      >
         <Input name="test" fieldProps={{ required: 'Error message' }} />
       </LabelledControl>
 
-      <LabelledControl label="Label">
+      <LabelledControl label="Label" labelPosition="left">
         <CheckboxGroup name="test2" options={['Foo', 'bar', { label: 'Baz', value: 'Baz', props: { disabled: true } }]} fieldProps={{ required: 'Error message' }} />
       </LabelledControl>
 

@@ -11,19 +11,17 @@ export type SingleCheckboxProps = CoreSingleCheckboxProps & ReactInputProps
 
 const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   name,
-  applyInitialValue = false,
   label,
   labelPosition,
   ...inputProps
 }) => {
-  const props = useCustomControlProps(name, {
+  const { id, ...props } = useCustomControlProps(name, {
     incomingDataFormatter: (value?: boolean) => !!value,
     outgoingDataFormatter: (value: string) => !!value,
-    formatInitialValue: applyInitialValue,
   }, {
     ...inputProps,
     type: 'checkbox',
-  })
+  }) as any
 
   return (
     <ControlWithErrors name={name}>

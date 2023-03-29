@@ -10,6 +10,17 @@ input:not([type=checkbox]):not([type=radio]), select, textarea {
   margin: .25rem 0;
 }
 
+/*********************************************/
+/* testing custom class for labelled control */
+/*********************************************/
+
+.lc-label {
+  width: 75%!important;
+}
+.lc-control {
+  width: 25%!important;
+}
+
 /***************/
 /* custom layout */
 /***************/
