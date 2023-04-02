@@ -148,7 +148,7 @@ describe('CheckboxGroup', () => {
     expect(screen.getByText('testing errors')).toBeInTheDocument()
   })
 
-  it('forward props to all items ItemLabel container', () => {
+  it('forwards props to all ItemLabel containers', () => {
     render(<CheckboxGroup
       name="test"
       options={['foo', 'bar']}
@@ -165,7 +165,25 @@ describe('CheckboxGroup', () => {
     expect(items[1]).toHaveClass('foo')
   })
 
-  it('wrap every items label in a div with given props when itemLabelContainerProps is provided', () => {
+  it('provides option props when "itemContainerProps" is a function', () => {
+    render(<CheckboxGroup
+      name="test"
+      options={[
+        { label: 'foo', value: 'foo', props: { 'data-custom': 'foo' } as any },
+        { label: 'bar', value: 'bar', props: { 'data-custom': 'bar' } as any },
+        'baz',
+      ]}
+      itemContainerProps={optionsProps => ({ className: `test-${String(optionsProps?.['data-custom'] ?? 'none')}` })}
+    />)
+    const items = screen.getAllByTestId('item-label')
+
+    expect(items).toHaveLength(3)
+    expect(items[0]).toHaveClass('test-foo')
+    expect(items[1]).toHaveClass('test-bar')
+    expect(items[2]).toHaveClass('test-none')
+  })
+
+  it('wrap every items label in a div with given props when "itemLabelContainerProps" is provided', () => {
     render(<CheckboxGroup
       name="test"
       options={['foo', 'bar']}
@@ -176,5 +194,21 @@ describe('CheckboxGroup', () => {
     expect(items).toHaveLength(2)
     expect(items[0]).toHaveClass('foo')
     expect(items[1]).toHaveClass('foo')
+  })
+
+  it('provides option props when "itemLabelContainerProps" is a function', () => {
+    render(<CheckboxGroup
+      name="test"
+      options={[
+        { label: 'foo', value: 'foo', props: { 'data-custom': 'foo' } as any },
+        { label: 'bar', value: 'bar', props: { 'data-custom': 'bar' } as any },
+        'baz',
+      ]}
+      itemLabelContainerProps={optionsProps => ({ className: `test-${String(optionsProps?.['data-custom'] ?? 'none')}` })}
+    />)
+
+    expect(screen.getByText('foo')).toHaveClass('test-foo')
+    expect(screen.getByText('bar')).toHaveClass('test-bar')
+    expect(screen.getByText('baz')).toHaveClass('test-none')
   })
 })

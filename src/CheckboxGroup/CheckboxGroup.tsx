@@ -14,9 +14,11 @@ type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInp
 type ReactLabelProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
 type ReactDivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
+type ItemProps<T> = T | ((props: any) => T)
+
 export type CheckboxGroupProps = CoreCheckboxGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps & {
-  itemContainerProps?: Omit<ReactLabelProps, 'for'>
-  itemLabelContainerProps?: ReactDivProps
+  itemContainerProps?: ItemProps<Omit<ReactLabelProps, 'for'>>
+  itemLabelContainerProps?: ItemProps<ReactDivProps>
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
@@ -37,16 +39,28 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         name={name}
         items={(
           <>
-            { parsedOptions.map(({ label, value, props: checkboxProps }) => (
-              <ItemLabel
-                key={value}
-                name={name}
-                control={<input {...getCheckboxProps(value, { ...props, ...checkboxProps })} />}
-                label={itemLabelContainerProps ? <div {...itemLabelContainerProps}>{ label }</div> : label}
-                labelPosition={labelPosition}
-                {...itemContainerProps}
-              />
-            )) }
+            { parsedOptions.map(({ label, value, props: checkboxProps }) => {
+              let containerProps
+              if (itemContainerProps) {
+                containerProps = typeof itemContainerProps === 'function' ? itemContainerProps(checkboxProps ?? {}) : itemContainerProps
+              }
+
+              let labelProps
+              if (itemLabelContainerProps) {
+                labelProps = typeof itemLabelContainerProps === 'function' ? itemLabelContainerProps(checkboxProps ?? {}) : itemLabelContainerProps
+              }
+
+              return (
+                <ItemLabel
+                  key={value}
+                  name={name}
+                  control={<input {...getCheckboxProps(value, { ...props, ...checkboxProps })} />}
+                  label={labelProps ? <div {...labelProps}>{ label }</div> : label}
+                  labelPosition={labelPosition}
+                  {...containerProps}
+                />
+              )
+            }) }
           </>
         )}
         orientation={orientation}

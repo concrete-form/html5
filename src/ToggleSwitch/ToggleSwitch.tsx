@@ -18,7 +18,6 @@ export type ToggleSwitchProps = CoreToggleSwitchProps & ReactInputProps & {
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   name,
-  applyInitialValue = false,
   label,
   labelPosition,
   containerProps,
@@ -29,7 +28,6 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   const { id, ...props } = useCustomControlProps(name, {
     incomingDataFormatter: (value?: boolean) => !!value,
     outgoingDataFormatter: (value: string) => !!value,
-    formatInitialValue: applyInitialValue,
   }, {
     ...inputProps,
     type: 'checkbox',

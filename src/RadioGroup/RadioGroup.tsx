@@ -14,9 +14,11 @@ type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInp
 type ReactLabelProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
 type ReactDivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
+type ItemProps<T> = T | ((props: any) => T)
+
 export type RadioGroupProps = CoreRadioGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps & {
-  itemContainerProps?: Omit<ReactLabelProps, 'for'>
-  itemLabelContainerProps?: ReactDivProps
+  itemContainerProps?: ItemProps<Omit<ReactLabelProps, 'for'>>
+  itemLabelContainerProps?: ItemProps<ReactDivProps>
 }
 
 const RadioGroup: React.FC<RadioGroupProps> = ({
@@ -37,16 +39,28 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
         name={name}
         items={(
           <>
-            { parsedOptions.map(({ label, value, props: radioProps }) => (
-              <ItemLabel
-                key={value}
-                name={name}
-                control={<input {...getRadioProps(value, { ...props, ...radioProps })} />}
-                label={itemLabelContainerProps ? <div {...itemLabelContainerProps}>{ label }</div> : label}
-                labelPosition={labelPosition}
-                {...itemContainerProps}
-              />
-            )) }
+            { parsedOptions.map(({ label, value, props: radioProps }) => {
+              let containerProps
+              if (itemContainerProps) {
+                containerProps = typeof itemContainerProps === 'function' ? itemContainerProps(radioProps ?? {}) : itemContainerProps
+              }
+
+              let labelProps
+              if (itemLabelContainerProps) {
+                labelProps = typeof itemLabelContainerProps === 'function' ? itemLabelContainerProps(radioProps ?? {}) : itemLabelContainerProps
+              }
+
+              return (
+                <ItemLabel
+                  key={value}
+                  name={name}
+                  control={<input {...getRadioProps(value, { ...props, ...radioProps })} />}
+                  label={labelProps ? <div {...labelProps}>{ label }</div> : label}
+                  labelPosition={labelPosition}
+                  {...containerProps}
+                />
+              )
+            }) }
           </>
         )}
         orientation={orientation}
