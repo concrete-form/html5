@@ -1,0 +1,31 @@
+/* posititons */
+
+.concreteform-left {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+.concreteform-right {
+  display: flex;
+  flex-direction: row;
+}
+.concreteform-top {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.concreteform-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+/* items group (radio / checkbox items) */
+
+.concreteform-items-group {
+  display: flex;
+}
+.concreteform-items-group-horizontal {
+  flex-direction: row;
+}
+.concreteform-items-group-vertical {
+  flex-direction: column;
+}
