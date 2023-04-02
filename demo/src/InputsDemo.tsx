@@ -43,7 +43,12 @@ const values = {
 const App: React.FC = () => {
   const [language, setLanguage] = useState('fr')
 
-  const form = useForm({ defaultValues: values, mode: 'onTouched', criteriaMode: 'all' })
+  const form = useForm({
+    // defaultValues: values,
+    // mode: 'onTouched',
+    // criteriaMode: 'all',
+  })
+
   const onSubmit = async (data: any) => {
     await wait(1000)
     console.log('Form submitted')
@@ -99,6 +104,9 @@ const App: React.FC = () => {
         <ToggleSwitch name="toggle" fieldProps={{ required: true }} label="I'm a toggle switch" />
         <Slider label="Optional slider label" name="slider" fieldProps={{ min: 25 }} />
         <SingleCheckbox name="acceptTerms" fieldProps={{ required: true }} label={<>I accept the <a href="#void">terms and conditions</a></>} />
+
+        <CheckboxGroup name="checkbox" options={options} />
+        <RadioGroup name="radio" options={options} />
 
         <br />
         <SubmitButton>Submit</SubmitButton>

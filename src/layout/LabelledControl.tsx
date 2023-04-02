@@ -13,14 +13,17 @@ const LabelledControl: React.FC<LabelledControlLayoutProps> = (props) => {
     labelContainerProps,
     controlContainerProps,
   } = props
-  const classNames = [
+  const { className: customClassName, ...containerProps } = mainContainerProps ?? {}
+
+  const containerClassName = [
     'concreteform-labelled-control',
     `concreteform-${String(labelPosition)}`,
-  ]
+    customClassName,
+  ].filter(c => !!c).join(' ')
 
   return (
     <CustomizableLayout type="labelledControl" props={props}>
-      <div data-testid="labelled-control" className={classNames.join(' ')} {...mainContainerProps}>
+      <div data-testid="labelled-control" {...containerProps} className={containerClassName}>
         <div {...controlContainerProps}>{ control }</div>
         <div {...labelContainerProps}>{ label }</div>
       </div>

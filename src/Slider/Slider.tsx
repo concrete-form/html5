@@ -7,12 +7,17 @@ import ControlWithErrors from '../util/ControlWithErrors'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type SliderProps = CoreSliderProps & ReactInputProps
+type ReactLabelProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
+
+export type SliderProps = CoreSliderProps & ReactInputProps & {
+  containerProps?: Omit<ReactLabelProps, 'for'>
+}
 
 const Slider: React.FC<SliderProps> = ({
   name,
   label,
   labelPosition = 'top',
+  containerProps,
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps)
@@ -24,6 +29,7 @@ const Slider: React.FC<SliderProps> = ({
         control={<input {...props} type="range" />}
         label={label}
         labelPosition={labelPosition}
+        {...containerProps}
       />
     </ControlWithErrors>
   )

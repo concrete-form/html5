@@ -11,13 +11,21 @@ import ItemsGroup from '../layout/ItemsGroup'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type RadioGroupProps = CoreRadioGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps
+type ReactLabelProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
+type ReactDivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+export type RadioGroupProps = CoreRadioGroupProps<ReactInputProps, React.ReactNode> & ReactInputProps & {
+  itemContainerProps?: Omit<ReactLabelProps, 'for'>
+  itemLabelContainerProps?: ReactDivProps
+}
 
 const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
   options,
   orientation,
   labelPosition,
+  itemContainerProps,
+  itemLabelContainerProps,
   ...inputProps
 }) => {
   const props = useControlProps(name, inputProps, true)
@@ -34,8 +42,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                 key={value}
                 name={name}
                 control={<input {...getRadioProps(value, { ...props, ...radioProps })} />}
-                label={label}
+                label={itemLabelContainerProps ? <div {...itemLabelContainerProps}>{ label }</div> : label}
                 labelPosition={labelPosition}
+                {...itemContainerProps}
               />
             )) }
           </>

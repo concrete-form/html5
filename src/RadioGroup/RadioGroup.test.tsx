@@ -148,4 +148,34 @@ describe('RadioGroup', () => {
     })
     expect(screen.getByText('testing errors')).toBeInTheDocument()
   })
+
+  it('forward props to all items ItemLabel container', () => {
+    render(<RadioGroup
+      name="test"
+      options={['foo', 'bar']}
+      itemContainerProps={{ 'data-testid': 'test-container', className: 'foo' } as any}
+    />)
+    const items = screen.getAllByTestId('test-container')
+
+    expect(items).toHaveLength(2)
+
+    expect(items[0]).toHaveClass('concreteform-item-label')
+    expect(items[0]).toHaveClass('foo')
+
+    expect(items[1]).toHaveClass('concreteform-item-label')
+    expect(items[1]).toHaveClass('foo')
+  })
+
+  it('wrap every items label in a div with given props when itemLabelContainerProps is provided', () => {
+    render(<RadioGroup
+      name="test"
+      options={['foo', 'bar']}
+      itemLabelContainerProps={{ 'data-testid': 'test-label', className: 'foo' } as any}
+    />)
+    const items = screen.getAllByTestId('test-label')
+
+    expect(items).toHaveLength(2)
+    expect(items[0]).toHaveClass('foo')
+    expect(items[1]).toHaveClass('foo')
+  })
 })

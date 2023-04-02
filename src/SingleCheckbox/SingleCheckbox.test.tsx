@@ -117,4 +117,13 @@ describe('SingleCheckbox', () => {
     })
     expect(screen.getByText('testing errors')).toBeInTheDocument()
   })
+
+  it('forward props to  ItemLabel container', () => {
+    render(<SingleCheckbox
+      name="test"
+      containerProps={{ 'data-testid': 'test-container', className: 'foo' } as any}
+    />)
+    expect(screen.getByTestId('test-container')).toHaveClass('concreteform-item-label')
+    expect(screen.getByTestId('test-container')).toHaveClass('foo')
+  })
 })

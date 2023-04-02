@@ -7,12 +7,17 @@ import ControlWithErrors from '../util/ControlWithErrors'
 import ItemLabel from '../layout/ItemLabel'
 
 type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type SingleCheckboxProps = CoreSingleCheckboxProps & ReactInputProps
+type ReactLabelProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
+
+export type SingleCheckboxProps = CoreSingleCheckboxProps & ReactInputProps & {
+  containerProps?: Omit<ReactLabelProps, 'for'>
+}
 
 const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   name,
   label,
   labelPosition,
+  containerProps,
   ...inputProps
 }) => {
   const { id, ...props } = useCustomControlProps(name, {
@@ -30,6 +35,7 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
         control={<input {...props} />}
         label={label}
         labelPosition={labelPosition}
+        {...containerProps}
       />
     </ControlWithErrors>
   )

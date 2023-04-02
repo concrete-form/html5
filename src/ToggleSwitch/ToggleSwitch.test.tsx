@@ -117,4 +117,21 @@ describe('ToggleSwitch', () => {
     })
     expect(screen.getByText('testing errors')).toBeInTheDocument()
   })
+
+  it('forward props to html elements', () => {
+    render(<ToggleSwitch
+      name="test"
+      containerProps={{ 'data-testid': 'test-container', className: 'foo' } as any}
+      toggleSwitchContainerProps={{ 'data-testid': 'test-ts-container', className: 'bar' } as any}
+      toggleSwitchSliderProps={{ 'data-testid': 'test-ts-slider', className: 'baz' } as any}
+    />)
+    expect(screen.getByTestId('test-container')).toHaveClass('concreteform-item-label')
+    expect(screen.getByTestId('test-container')).toHaveClass('foo')
+
+    expect(screen.getByTestId('test-ts-container')).toHaveClass('concreteform-toggle-switch')
+    expect(screen.getByTestId('test-ts-container')).toHaveClass('bar')
+
+    expect(screen.getByTestId('test-ts-slider')).toHaveClass('concreteform-toggle-switch-slider')
+    expect(screen.getByTestId('test-ts-slider')).toHaveClass('baz')
+  })
 })

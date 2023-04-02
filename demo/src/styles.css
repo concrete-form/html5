@@ -10,6 +10,39 @@ input:not([type=checkbox]):not([type=radio]), select, textarea {
   margin: .25rem 0;
 }
 
+/********************************************/
+/* testing custom classes for toggle switch */
+/********************************************/
+
+.custom-ts-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.custom-ts {
+  width: 64px;
+  height: 40px;
+}
+
+.custom-ts .custom-ts-slider {
+  background: rgb(188, 41, 41);
+}
+
+.custom-ts .custom-ts-slider:before {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  transform: scale(.80);
+}
+
+.custom-ts > input:checked + .custom-ts-slider {
+  background: rgb(22, 200, 22);
+}
+
+.custom-ts > input:checked:disabled + .custom-ts-slider {
+  background: rgb(189, 237, 189);
+}
+
 /*********************************************/
 /* testing custom class for labelled control */
 /*********************************************/

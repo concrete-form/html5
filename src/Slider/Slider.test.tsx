@@ -31,4 +31,13 @@ describe('Slider', () => {
     render(<Slider name="test" label="test-label" labelPosition="bottom" />)
     expect(screen.getByTestId('item-label')).toHaveClass('concreteform-bottom')
   })
+
+  it('forward props to  ItemLabel container', () => {
+    render(<Slider
+      name="test"
+      containerProps={{ 'data-testid': 'test-container', className: 'foo' } as any}
+    />)
+    expect(screen.getByTestId('test-container')).toHaveClass('concreteform-item-label')
+    expect(screen.getByTestId('test-container')).toHaveClass('foo')
+  })
 })
